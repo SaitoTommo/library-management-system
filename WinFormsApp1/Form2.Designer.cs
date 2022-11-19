@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // listBox1
@@ -40,11 +41,20 @@
             this.listBox1.Size = new System.Drawing.Size(120, 89);
             this.listBox1.TabIndex = 0;
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(469, 314);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(121, 97);
+            this.listView1.TabIndex = 1;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.listBox1);
             this.Name = "Form2";
             this.Text = "Form2";
@@ -55,5 +65,6 @@
         #endregion
 
         private ListBox listBox1;
+        private ListView listView1;
     }
 }
