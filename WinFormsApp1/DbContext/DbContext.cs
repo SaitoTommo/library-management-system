@@ -13,19 +13,19 @@ namespace WinFormsApp1
     /// </summary>
     public class LibraryDbContext : DbContext
     {
-        public DbSet<Book> Books { get; set; }
+        public static LibraryDbContext Shared { get; set; } = new LibraryDbContext();        public DbSet<Book> Books { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<BookCategory> Categories { get; set; }
         public DbSet<BorrowLog> BorrowLogs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite("Data Source=Database/products.db");
+        => optionsBuilder.UseSqlite("Data Source=Database\\Library.db");
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Book>().HasData(
                 new Book
                 {
-                    AssetID = Random.Shared.Next(1, 9999).ToString(),
+                    BookID = Random.Shared.Next(1, 9999).ToString(),
                     Author = "UnKnown",
                     Category = "A1",
                     Description = "Unknown",
@@ -37,7 +37,7 @@ namespace WinFormsApp1
                 },
                 new Book
                 {
-                    AssetID = Random.Shared.Next(1, 9999).ToString(),
+                    BookID = Random.Shared.Next(1, 9999).ToString(),
                     Author = "UnKnown",
                     Category = "A1",
                     Description = "Unknown",

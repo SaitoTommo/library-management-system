@@ -11,7 +11,7 @@ namespace WinFormsApp1
         /// <summary>
         /// 资产编号
         /// </summary>
-        public string AssetID { get; set; }
+        public string BookID { get; set; }
         public string ISBN { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
