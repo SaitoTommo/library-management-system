@@ -19,8 +19,8 @@ namespace WinFormsApp1
             Application.Run(new Form1());
 
             #region 应用程序关闭时执行的语句
-           // LibraryDbContext.Shared.Dispose();
-            //LibraryDbContext.Shared = null;//释放上下文
+            LibraryDbContext.Shared.Dispose();
+            LibraryDbContext.Shared = null;//释放上下文
             #endregion
         }
     }

@@ -88,10 +88,23 @@ namespace WinFormsApp1
                     Name = $"Book{Random.Shared.Next(1, 9999)}",
                     Position = 1,
                     Publisher = "华南理工大学出版社"
+                },
+                new Book
+                {
+                    BookID = Random.Shared.Next(1, 9999).ToString(),
+                    Author = "UnKnown",
+                    Category = "A2",
+                    Description = "Unknown",
+                    ISBN = Random.Shared.Next(1000000, 9999999).ToString(),
+                    IsInLib = true,
+                    Name = $"Book{Random.Shared.Next(1, 9999)}",
+                    Position = 1,
+                    Publisher = "华南理工大学出版社"
                 }
             );
             modelBuilder.Entity<BookCategory>().HasData(
-                new BookCategory {  ID = "A1", Name = "马克思、恩格斯著作" }
+                new BookCategory {  ID = "A1", Name = "马克思、恩格斯著作" },
+                new BookCategory { ID = "A2", Name = "列宁著作" }
             );
             modelBuilder.Entity<Account>().HasData(
                 new Account { ID = "1", Gender = "男", Name = "阿塔尼斯", RegisterDate = new DateTime(2022,1,1), Role = 0 },
