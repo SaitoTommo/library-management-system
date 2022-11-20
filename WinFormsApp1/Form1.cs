@@ -22,11 +22,12 @@ namespace WinFormsApp1
 
         private void Gridview_Category_SelectionChanged(object sender, EventArgs e)
         {
-            //BookCategory Category = (BookCategory)Gridview_Category.CurrentRow.DataBoundItem;
-            //if (Category != null)
-            //{
-            //    LibraryDbContext.Shared.Entry(Category).Collection<Book>(e => e.Books).Load();//(e => e.Books).Load();
-            //}
+            if (Gridview_Category.Rows.Count<=0) return;
+            BookCategory Category = (BookCategory)Gridview_Category.CurrentRow.DataBoundItem;
+            if (Category != null && Category.CategoryID != null && Category.Name != null)
+            {
+                LibraryDbContext.Shared.Entry(Category).Collection<Book>(e => e.Books).Load();//(e => e.Books).Load();
+            }
         }
 
         private void ±£¥ÊToolStripMenuItem_Click(object sender, EventArgs e)
@@ -39,11 +40,16 @@ namespace WinFormsApp1
 
         private void Gridview_Category_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            BookCategory Category = (BookCategory)Gridview_Category.CurrentRow.DataBoundItem;
-            if (Category != null)
-            {
-                LibraryDbContext.Shared.Entry(Category).Collection<Book>(e => e.Books).Load();//(e => e.Books).Load();
-            }
+
+        }
+
+        private void Gridview_Category_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //BookCategory Category = (BookCategory)Gridview_Category.CurrentRow.DataBoundItem;
+            //if (Category != null)
+            //{
+            //    LibraryDbContext.Shared.Entry(Category).Collection<Book>(e => e.Books).Load();//(e => e.Books).Load();
+            //}
         }
     }
 }

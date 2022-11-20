@@ -16,6 +16,7 @@ namespace WinFormsApp1
         /// 资产编号
         /// </summary>
         [Key]
+        public int Id { get; set; }
         public string BookID { get; set; }
         public string ISBN { get; set; }
         public string Name { get; set; }
@@ -23,9 +24,9 @@ namespace WinFormsApp1
         /// <summary>
         /// 《中国图书馆分类法》分类
         /// </summary>
-        [ForeignKey("Category")]
+        [ForeignKey("CategoryID")]
         public virtual BookCategory BookCategory { get; set; } = null!;//导航
-        public string Category { get; set; }
+        public int CategoryID { get; set; }
 
         /// <summary>
         /// 书库位置 如三楼书库
@@ -33,6 +34,7 @@ namespace WinFormsApp1
         [ForeignKey("Position")]
         public virtual BookWareHouse BookWareHouse { get; set; } = null!;
         public int Position { get; set; }
+
         public string Author { get; set; }
         /// <summary>
         /// 出版社

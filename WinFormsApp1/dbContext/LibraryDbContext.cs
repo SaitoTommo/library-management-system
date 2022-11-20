@@ -12,19 +12,21 @@ namespace WinFormsApp1
     /// <summary>
     /// 数据库内容
     /// </summary>
-    public class LibraryDbContext :DbContext
+    public class LibraryDbContext : DbContext
     {
         /// <summary>
         /// 共享数据库上下文实例，使用前需要先调用SetSharedInstance方法
         /// </summary>
-        public static LibraryDbContext Shared 
-        { 
-            get {
-                return  _instance;
+        public static LibraryDbContext Shared
+        {
+            get
+            {
+                return _instance;
             }
-            set {
+            set
+            {
                 _instance = value;
-            } 
+            }
         }
 
         private static LibraryDbContext _instance;
@@ -34,14 +36,14 @@ namespace WinFormsApp1
         /// </summary>
         /// <param name="ConnectionString"></param>
         /// <returns>返回shared对象</returns>
-        public static LibraryDbContext SetSharedInstance(string ConnectionString) 
+        public static LibraryDbContext SetSharedInstance(string ConnectionString)
         {
             _instance = new LibraryDbContext(ConnectionString);
 
             return _instance;
         }
 
-        public LibraryDbContext(string ConnectionString) 
+        public LibraryDbContext(string ConnectionString)
         {
             if (ConnectionString == null || ConnectionString == string.Empty)
                 throw new ArgumentNullException("ConnectionString", "ConnectionString不能为空");
@@ -64,12 +66,17 @@ namespace WinFormsApp1
             modelBuilder.Entity<BookWareHouse>().HasData(
                 new BookWareHouse { Id = 1, Name = "一楼书库" }
             );
+            modelBuilder.Entity<BookCategory>().HasData(
+                new BookCategory { Id = 1, CategoryID = "A1", Name = "马克思、恩格斯著作" },
+                new BookCategory { Id = 2, CategoryID = "A2", Name = "列宁著作" }
+            );
             modelBuilder.Entity<Book>().HasData(
                 new Book
                 {
+                    Id = 1,
                     BookID = Random.Shared.Next(1, 9999).ToString(),
                     Author = "UnKnown",
-                    Category = "A1",
+                    CategoryID = 1,
                     Description = "Unknown",
                     ISBN = Random.Shared.Next(1000000, 9999999).ToString(),
                     IsInLib = true,
@@ -79,9 +86,10 @@ namespace WinFormsApp1
                 },
                 new Book
                 {
+                    Id = 2,
                     BookID = Random.Shared.Next(1, 9999).ToString(),
                     Author = "UnKnown",
-                    Category = "A1",
+                    CategoryID = 1,
                     Description = "Unknown",
                     ISBN = Random.Shared.Next(1000000, 9999999).ToString(),
                     IsInLib = true,
@@ -91,9 +99,10 @@ namespace WinFormsApp1
                 },
                 new Book
                 {
+                    Id = 3,
                     BookID = Random.Shared.Next(1, 9999).ToString(),
                     Author = "UnKnown",
-                    Category = "A2",
+                    CategoryID = 2,
                     Description = "Unknown",
                     ISBN = Random.Shared.Next(1000000, 9999999).ToString(),
                     IsInLib = true,
@@ -102,13 +111,9 @@ namespace WinFormsApp1
                     Publisher = "华南理工大学出版社"
                 }
             );
-            modelBuilder.Entity<BookCategory>().HasData(
-                new BookCategory {  ID = "A1", Name = "马克思、恩格斯著作" },
-                new BookCategory { ID = "A2", Name = "列宁著作" }
-            );
             modelBuilder.Entity<Account>().HasData(
-                new Account { ID = "1", Gender = "男", Name = "阿塔尼斯", RegisterDate = new DateTime(2022,1,1), Role = 0 },
-                new Account { ID = "2", Gender = "女", Name = "塞兰迪斯", RegisterDate = new DateTime(2022, 1, 1), Role = 1 }
+                new Account { AId = 1, ID = "1", Gender = "男", Name = "阿塔尼斯", RegisterDate = new DateTime(2022, 1, 1), Role = 0 },
+                new Account { AId = 2, ID = "2", Gender = "女", Name = "塞兰迪斯", RegisterDate = new DateTime(2022, 1, 1), Role = 1 }
             );
         }
     }

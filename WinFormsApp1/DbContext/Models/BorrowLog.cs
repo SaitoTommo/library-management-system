@@ -27,15 +27,15 @@ namespace WinFormsApp1
         public string ID { get; set; }
 
         /// <summary>
-        /// 借书的人的学号
+        /// 借书的人的账号唯一标识
         /// </summary>
         [ForeignKey("BorrowerID")]
         public Account Account { get; set; }
-        public string BorrowerID { get; set; }
+        public int BorrowerID { get; set; }
 
         [ForeignKey("BookID")]
         public Book Book { get; set; }
-        public string BookID { get; set; }
+        public int BookID { get; set; }
 
         /// <summary>
         /// 借书行为

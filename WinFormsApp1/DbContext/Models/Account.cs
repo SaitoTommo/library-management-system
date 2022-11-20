@@ -13,9 +13,13 @@ namespace WinFormsApp1
     public class Account
     {
         /// <summary>
-        /// 学号
+        /// 账号的唯一标识
         /// </summary>
         [Key]
+        public int AId { get; set; }
+        /// <summary>
+        /// 学号
+        /// </summary>
         public string ID { get; set; }
         /// <summary>
         /// 姓名（中文）
