@@ -21,6 +21,7 @@ namespace WinFormsApp1
     /// </summary>
     public class BorrowLog
     {
+        
         [Key]
         [Required]
         public string ID { get; set; }
