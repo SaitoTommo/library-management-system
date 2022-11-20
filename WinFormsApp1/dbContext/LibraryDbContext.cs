@@ -20,7 +20,7 @@ namespace WinFormsApp1
         public static LibraryDbContext Shared 
         { 
             get {
-                return _instance == null ? throw new Exception("尚未设置shared对象") : _instance;
+                return  _instance;
             }
             set {
                 _instance = value;

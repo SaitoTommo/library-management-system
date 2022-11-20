@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 using System;
 using System.Collections.Generic;
@@ -15,5 +16,6 @@ namespace WinFormsApp1
         public int Id { get; set; }
         
         public string Name { get; set; }
+        public virtual ObservableCollectionListSource<Book> Books { get; } = new();
     }
 }

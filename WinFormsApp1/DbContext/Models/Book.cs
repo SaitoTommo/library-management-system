@@ -24,14 +24,14 @@ namespace WinFormsApp1
         /// 《中国图书馆分类法》分类
         /// </summary>
         [ForeignKey("Category")]
-        public BookCategory BookCategory { get; set; }
+        public virtual BookCategory BookCategory { get; set; } = null!;//导航
         public string Category { get; set; }
 
         /// <summary>
         /// 书库位置 如三楼书库
         /// </summary>
         [ForeignKey("Position")]
-        public BookWareHouse BookWareHouse { get; set; }
+        public virtual BookWareHouse BookWareHouse { get; set; } = null!;
         public int Position { get; set; }
         public string Author { get; set; }
         /// <summary>
