@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace WinFormsApp1
         /// <summary>
         /// 学号
         /// </summary>
+        [Key]
         public string ID { get; set; }
         /// <summary>
         /// 姓名（中文）

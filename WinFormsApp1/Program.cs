@@ -8,12 +8,11 @@ namespace WinFormsApp1
         [STAThread]
         static void Main()
         {
-            MessageBox.Show(System.Environment.CurrentDirectory+"\n"+System.Environment.CurrentDirectory);
+            //MessageBox.Show(System.Environment.CurrentDirectory+"\n"+System.Environment.CurrentDirectory);
+            LibraryDbContext.SetSharedInstance("Data Source=Database\\Library.db");
             using (LibraryDbContext dbContext = LibraryDbContext.Shared) { 
                 //初始化数据库
                 dbContext.Database.EnsureCreated();
-
-                
             }
 
             // To customize application configuration such as set high DPI settings or default font,
@@ -21,7 +20,10 @@ namespace WinFormsApp1
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
 
-
+            #region 应用程序关闭时执行的语句
+            LibraryDbContext.Shared.Dispose();
+            LibraryDbContext.Shared = null;//释放上下文
+            #endregion
         }
     }
 }

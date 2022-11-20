@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace WinFormsApp1
 {
@@ -11,6 +15,7 @@ namespace WinFormsApp1
         /// <summary>
         /// 资产编号
         /// </summary>
+        [Key]
         public string BookID { get; set; }
         public string ISBN { get; set; }
         public string Name { get; set; }
@@ -18,11 +23,16 @@ namespace WinFormsApp1
         /// <summary>
         /// 《中国图书馆分类法》分类
         /// </summary>
+        [ForeignKey("Category")]
+        public BookCategory BookCategory { get; set; }
         public string Category { get; set; }
+
         /// <summary>
         /// 书库位置 如三楼书库
         /// </summary>
-        public string Position { get; set; }
+        [ForeignKey("Position")]
+        public BookWareHouse BookWareHouse { get; set; }
+        public int Position { get; set; }
         public string Author { get; set; }
         /// <summary>
         /// 出版社

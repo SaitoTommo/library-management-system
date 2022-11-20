@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,17 +12,58 @@ namespace WinFormsApp1
     /// <summary>
     /// 数据库内容
     /// </summary>
-    public class LibraryDbContext : DbContext
+    public class LibraryDbContext :DbContext
     {
-        public static LibraryDbContext Shared { get; set; } = new LibraryDbContext();        public DbSet<Book> Books { get; set; }
+        /// <summary>
+        /// 共享数据库上下文实例，使用前需要先调用SetSharedInstance方法
+        /// </summary>
+        public static LibraryDbContext Shared 
+        { 
+            get {
+                return _instance == null ? throw new Exception("尚未设置shared对象") : _instance;
+            }
+            set {
+                _instance = value;
+            } 
+        }
+
+        private static LibraryDbContext _instance;
+
+        /// <summary>
+        /// 设置共享数据库上下文的Connectionstring
+        /// </summary>
+        /// <param name="ConnectionString"></param>
+        /// <returns>返回shared对象</returns>
+        public static LibraryDbContext SetSharedInstance(string ConnectionString) 
+        {
+            _instance = new LibraryDbContext(ConnectionString);
+
+            return _instance;
+        }
+
+        public LibraryDbContext(string ConnectionString) 
+        {
+            if (ConnectionString == null || ConnectionString == string.Empty)
+                throw new ArgumentNullException("ConnectionString", "ConnectionString不能为空");
+
+            this._ConnectionString = ConnectionString;
+        }
+
+        public DbSet<Book> Books { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<BookCategory> Categories { get; set; }
         public DbSet<BorrowLog> BorrowLogs { get; set; }
 
+        private readonly string _ConnectionString = string.Empty;
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite("Data Source=Database\\Library.db");
+        => optionsBuilder.UseSqlite(_ConnectionString);
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<BookWareHouse>().HasData(
+                new BookWareHouse { Id = 1, Name = "一楼书库" }
+            );
             modelBuilder.Entity<Book>().HasData(
                 new Book
                 {
@@ -32,7 +74,7 @@ namespace WinFormsApp1
                     ISBN = Random.Shared.Next(1000000, 9999999).ToString(),
                     IsInLib = true,
                     Name = $"Book{Random.Shared.Next(1, 9999)}",
-                    Position = "一楼书库",
+                    Position = 1,
                     Publisher = "华南理工大学出版社"
                 },
                 new Book
@@ -44,7 +86,7 @@ namespace WinFormsApp1
                     ISBN = Random.Shared.Next(1000000, 9999999).ToString(),
                     IsInLib = true,
                     Name = $"Book{Random.Shared.Next(1, 9999)}",
-                    Position = "一楼书库",
+                    Position = 1,
                     Publisher = "华南理工大学出版社"
                 }
             );

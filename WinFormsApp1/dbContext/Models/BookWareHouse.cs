@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace WinFormsApp1
 {
-    public class BookCategory
+    public class BookWareHouse
     {
         [Key]
-        public string ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
     }
 }
