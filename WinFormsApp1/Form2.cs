@@ -50,6 +50,7 @@ namespace WinFormsApp1
         private void button_cancel_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Test");
+            MessageBox.Show("Test");
         }
     }
 }
