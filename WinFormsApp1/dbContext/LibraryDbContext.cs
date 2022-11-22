@@ -55,7 +55,6 @@ namespace WinFormsApp1
         public DbSet<Account> Accounts { get; set; }
         public DbSet<BookCategory> Categories { get; set; }
         public DbSet<BorrowLog> BorrowLogs { get; set; }
-        public DbSet<BookWareHouse> BookWareHouses { get; set; }
 
         private readonly string _ConnectionString = string.Empty;
 
