@@ -16,5 +16,10 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
+
+        private void form_book_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

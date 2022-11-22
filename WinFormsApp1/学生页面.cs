@@ -21,5 +21,10 @@ namespace WinFormsApp1
         {
 
         }
+
+        private void winform_stu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

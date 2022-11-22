@@ -121,7 +121,7 @@
             this.radioButton_admin.Text = "管理员";
             this.radioButton_admin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton_admin.UseVisualStyleBackColor = true;
-            this.radioButton_admin.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            //this.radioButton_admin.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // button_cancel
             // 
@@ -149,7 +149,7 @@
             this.radioButton_stu.Text = "学生";
             this.radioButton_stu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton_stu.UseVisualStyleBackColor = true;
-            this.radioButton_stu.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            //this.radioButton_stu.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // winform_log
             // 
