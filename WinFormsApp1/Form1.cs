@@ -3,9 +3,9 @@ using Microsoft.VisualBasic;
 
 namespace WinFormsApp1
 {
-    public partial class 借书记录管理 : Form
+    public partial class Form1 : Form
     {
-        public 借书记录管理()
+        public Form1()
         {
             InitializeComponent();
         }
