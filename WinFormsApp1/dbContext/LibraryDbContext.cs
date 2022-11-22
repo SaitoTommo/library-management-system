@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,8 +29,7 @@ namespace WinFormsApp1
                 _instance = value;
             }
         }
-
-        private static LibraryDbContext _instance;
+        private static LibraryDbContext _instance;//shared属性对应的实体
 
         /// <summary>
         /// 设置共享数据库上下文的Connectionstring
@@ -55,6 +55,7 @@ namespace WinFormsApp1
         public DbSet<Account> Accounts { get; set; }
         public DbSet<BookCategory> Categories { get; set; }
         public DbSet<BorrowLog> BorrowLogs { get; set; }
+        public DbSet<BookWareHouse> BookWareHouses { get; set; }
 
         private readonly string _ConnectionString = string.Empty;
 
@@ -63,6 +64,7 @@ namespace WinFormsApp1
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region 种子数据
             modelBuilder.Entity<BookWareHouse>().HasData(
                 new BookWareHouse { Id = 1, Name = "一楼书库" }
             );
@@ -112,9 +114,10 @@ namespace WinFormsApp1
                 }
             );
             modelBuilder.Entity<Account>().HasData(
-                new Account { AId = 1, ID = "1", Gender = "男", Name = "阿塔尼斯", RegisterDate = new DateTime(2022, 1, 1), Role = 0 },
-                new Account { AId = 2, ID = "2", Gender = "女", Name = "塞兰迪斯", RegisterDate = new DateTime(2022, 1, 1), Role = 1 }
+                new Account { AId = 1, ID = "1", Gender = "男", Name = "阿塔尼斯", RegisterDate = new DateTime(2022, 1, 1), Role = 0, Password = Encryptor.SHA256Encrypt("123456X") },
+                new Account { AId = 2, ID = "2", Gender = "女", Name = "塞兰迪斯", RegisterDate = new DateTime(2022, 1, 1), Role = 1, Password = Encryptor.SHA256Encrypt("123456X") }
             );
+            #endregion
         }
     }
 }

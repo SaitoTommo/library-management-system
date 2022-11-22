@@ -22,6 +22,10 @@ namespace WinFormsApp1
         /// </summary>
         public string ID { get; set; }
         /// <summary>
+        /// 存储时采用 SHA256(原文+"X") 加密
+        /// </summary>
+        public string Password { get; set; }
+        /// <summary>
         /// 姓名（中文）
         /// </summary>
         public string Name { get; set; }
