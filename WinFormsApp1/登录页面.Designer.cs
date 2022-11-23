@@ -52,7 +52,7 @@
             this.welcome.Size = new System.Drawing.Size(303, 33);
             this.welcome.TabIndex = 0;
             this.welcome.Text = "欢迎登录图书馆系统";
-            this.welcome.Click += new System.EventHandler(this.label1_Click);
+            //this.welcome.Click += new System.EventHandler(this.label1_Click);
             // 
             // account
             // 
@@ -64,7 +64,7 @@
             this.account.Size = new System.Drawing.Size(55, 25);
             this.account.TabIndex = 1;
             this.account.Text = "学号:";
-            this.account.Click += new System.EventHandler(this.account_Click);
+            //this.account.Click += new System.EventHandler(this.account_Click);
             // 
             // password
             // 
@@ -76,7 +76,7 @@
             this.password.Size = new System.Drawing.Size(55, 25);
             this.password.TabIndex = 1;
             this.password.Text = "密码:";
-            this.password.Click += new System.EventHandler(this.label3_Click);
+            //this.password.Click += new System.EventHandler(this.label3_Click);
             // 
             // textBox1
             // 
@@ -85,7 +85,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "在此输入账号";
             this.textBox1.Size = new System.Drawing.Size(170, 23);
-            this.textBox1.TabIndex = 2;
+            this.textBox1.TabIndex = 1;
             // 
             // textBox2
             // 

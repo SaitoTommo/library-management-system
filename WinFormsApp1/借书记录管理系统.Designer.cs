@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1
 {
-    partial class 借书记录管理系统
+    partial class winform_BorrowLogManage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(借书记录管理系统));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winform_BorrowLogManage));
             this.maskedTextBox22 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox11 = new System.Windows.Forms.MaskedTextBox();
             this.label_search_isbm1 = new System.Windows.Forms.Label();
@@ -182,7 +182,7 @@
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             // 
-            // 借书记录管理系统
+            // winform_BorrowLogManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -197,7 +197,7 @@
             this.Controls.Add(this.button_add1);
             this.Controls.Add(this.form_record);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Name = "借书记录管理系统";
+            this.Name = "winform_BorrowLogManage";
             this.Text = "借书记录管理系统";
             ((System.ComponentModel.ISupportInitialize)(this.form_record)).EndInit();
             this.ResumeLayout(false);

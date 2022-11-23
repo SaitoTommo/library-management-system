@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 
+using System.Text;
+
 namespace WinFormsApp1
 {
     public partial class Form1 : Form
@@ -16,6 +18,7 @@ namespace WinFormsApp1
             //using (LibraryDbContext dbContext = )
             LibraryDbContext.Shared.Categories.Load();
             this.bookCategoryBindingSource.DataSource = LibraryDbContext.Shared.Categories.Local.ToBindingList();
+
             //LibraryDbContext.Shared.Categories.Load();
 
         }

@@ -10,6 +10,12 @@ namespace WinFormsApp1
     /// <summary>
     /// 账号类型
     /// </summary>
+    public enum AccountRole 
+    {
+        Admin,
+        Student
+    }
+
     public class Account
     {
         /// <summary>
@@ -19,6 +25,7 @@ namespace WinFormsApp1
         public int AId { get; set; }
         /// <summary>
         /// 学号
+        /// 登陆凭证
         /// </summary>
         public string ID { get; set; }
         /// <summary>
@@ -33,7 +40,7 @@ namespace WinFormsApp1
         /// <summary>
         /// 身份 管理员（0）或学生（1）
         /// </summary>
-        public int Role { get; set; }
+        public AccountRole Role { get; set; }
         public DateTime RegisterDate { get; set; }
     }
 }

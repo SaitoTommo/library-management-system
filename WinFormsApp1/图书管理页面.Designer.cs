@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1
 {
-    partial class 图书管理页面
+    partial class winform_BookManage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(图书管理页面));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(winform_BookManage));
             this.form_book = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -194,7 +194,7 @@
             this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 2;
             // 
-            // 图书管理页面
+            // winform_BookManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -210,7 +210,7 @@
             this.Controls.Add(this.button_add);
             this.Controls.Add(this.form_book);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.Name = "图书管理页面";
+            this.Name = "winform_BookManage";
             this.Text = "图书管理页面";
             ((System.ComponentModel.ISupportInitialize)(this.form_book)).EndInit();
             this.ResumeLayout(false);

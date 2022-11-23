@@ -10,9 +10,9 @@ using System.Windows.Forms;                //图书管理页面的增删改查
 
 namespace WinFormsApp1
 {
-    public partial class 图书管理页面 : Form
+    public partial class winform_BookManage : Form
     {
-        public 图书管理页面()
+        public winform_BookManage()
         {
             InitializeComponent();
         }

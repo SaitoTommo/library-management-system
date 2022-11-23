@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class 借书记录管理系统 : Form
+    public partial class winform_BorrowLogManage : Form
     {
-        public 借书记录管理系统()
+        public winform_BorrowLogManage()
         {
             InitializeComponent();
         }
