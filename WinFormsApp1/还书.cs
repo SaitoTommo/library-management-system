@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,9 @@ namespace WinFormsApp1
                 from books in LibraryDbContext.Shared.Books
                 where books.OwnerID == Global.account.AId
                 join logs in LibraryDbContext.Shared.BorrowLogs on
-                new { BookId = books.Id, id = Global.account.AId } equals new { logs.BookId, id = logs.BorrowerID }
+                new { BookId = books.Id, id = Global.account.AId, type = BookActionType.Borrow } equals new { logs.BookId, id = logs.BorrowerID, type = logs.ActionType }
+                orderby logs.BorrowTime descending
+                group logs
                 select new ReturnBookQueryRecord { book = books, log = logs };
             form_record.DataSource = Query.ToList();
         }
