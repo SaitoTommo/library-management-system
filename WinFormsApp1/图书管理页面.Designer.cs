@@ -41,14 +41,9 @@
             this.button_revise = new System.Windows.Forms.Button();
             this.label_search = new System.Windows.Forms.Label();
             this.label_search_isbm = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button_refresh = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.form_book)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,13 +64,13 @@
             this.Column6});
             this.form_book.Dock = System.Windows.Forms.DockStyle.Left;
             this.form_book.Location = new System.Drawing.Point(0, 0);
-            this.form_book.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.form_book.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.form_book.MultiSelect = false;
             this.form_book.Name = "form_book";
             this.form_book.RowHeadersVisible = false;
             this.form_book.RowHeadersWidth = 51;
             this.form_book.RowTemplate.Height = 29;
-            this.form_book.Size = new System.Drawing.Size(507, 439);
+            this.form_book.Size = new System.Drawing.Size(394, 373);
             this.form_book.TabIndex = 0;
             // 
             // Column1
@@ -117,10 +112,10 @@
             // button_add
             // 
             this.button_add.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_add.Location = new System.Drawing.Point(536, 71);
-            this.button_add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_add.Location = new System.Drawing.Point(417, 60);
+            this.button_add.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button_add.Name = "button_add";
-            this.button_add.Size = new System.Drawing.Size(104, 45);
+            this.button_add.Size = new System.Drawing.Size(81, 38);
             this.button_add.TabIndex = 1;
             this.button_add.Text = "添加图书";
             this.button_add.UseVisualStyleBackColor = true;
@@ -128,10 +123,10 @@
             // button_dele
             // 
             this.button_dele.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_dele.Location = new System.Drawing.Point(662, 71);
-            this.button_dele.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_dele.Location = new System.Drawing.Point(515, 60);
+            this.button_dele.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button_dele.Name = "button_dele";
-            this.button_dele.Size = new System.Drawing.Size(104, 45);
+            this.button_dele.Size = new System.Drawing.Size(81, 38);
             this.button_dele.TabIndex = 1;
             this.button_dele.Text = "删除图书";
             this.button_dele.UseVisualStyleBackColor = true;
@@ -139,10 +134,10 @@
             // button_revise
             // 
             this.button_revise.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_revise.Location = new System.Drawing.Point(536, 138);
-            this.button_revise.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_revise.Location = new System.Drawing.Point(466, 117);
+            this.button_revise.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button_revise.Name = "button_revise";
-            this.button_revise.Size = new System.Drawing.Size(104, 45);
+            this.button_revise.Size = new System.Drawing.Size(81, 38);
             this.button_revise.TabIndex = 1;
             this.button_revise.Text = "修改图书";
             this.button_revise.UseVisualStyleBackColor = true;
@@ -151,9 +146,10 @@
             // 
             this.label_search.AutoSize = true;
             this.label_search.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_search.Location = new System.Drawing.Point(519, 236);
+            this.label_search.Location = new System.Drawing.Point(404, 201);
+            this.label_search.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_search.Name = "label_search";
-            this.label_search.Size = new System.Drawing.Size(100, 24);
+            this.label_search.Size = new System.Drawing.Size(84, 20);
             this.label_search.TabIndex = 2;
             this.label_search.Text = "书名查询：";
             // 
@@ -161,97 +157,51 @@
             // 
             this.label_search_isbm.AutoSize = true;
             this.label_search_isbm.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_search_isbm.Location = new System.Drawing.Point(515, 278);
+            this.label_search_isbm.Location = new System.Drawing.Point(398, 256);
+            this.label_search_isbm.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_search_isbm.Name = "label_search_isbm";
-            this.label_search_isbm.Size = new System.Drawing.Size(105, 24);
+            this.label_search_isbm.Size = new System.Drawing.Size(91, 20);
             this.label_search_isbm.TabIndex = 2;
-            this.label_search_isbm.Text = "ISBN查询：";
+            this.label_search_isbm.Text = "ISBM查询：";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(488, 201);
+            this.maskedTextBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(121, 23);
+            this.maskedTextBox1.TabIndex = 3;
+            this.maskedTextBox1.Text = "请输入要查询的书名";
+            this.maskedTextBox1.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
+            // 
+            // maskedTextBox2
+            // 
+            this.maskedTextBox2.Location = new System.Drawing.Point(488, 256);
+            this.maskedTextBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(121, 23);
+            this.maskedTextBox2.TabIndex = 3;
+            this.maskedTextBox2.Text = "请输入要查询的ISBM";
+            this.maskedTextBox2.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(536, 376);
+            this.label1.Location = new System.Drawing.Point(417, 320);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 24);
+            this.label1.Size = new System.Drawing.Size(0, 20);
             this.label1.TabIndex = 2;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(625, 236);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "请输入您要查询的书名";
-            this.textBox1.Size = new System.Drawing.Size(156, 27);
-            this.textBox1.TabIndex = 4;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(625, 278);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "请输入您要查询的ISBM";
-            this.textBox2.Size = new System.Drawing.Size(162, 27);
-            this.textBox2.TabIndex = 5;
-            // 
-            // button_refresh
-            // 
-            this.button_refresh.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_refresh.Location = new System.Drawing.Point(662, 138);
-            this.button_refresh.Name = "button_refresh";
-            this.button_refresh.Size = new System.Drawing.Size(104, 45);
-            this.button_refresh.TabIndex = 6;
-            this.button_refresh.Text = "刷新";
-            this.button_refresh.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(520, 327);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 24);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "作者查询：";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(625, 327);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PlaceholderText = "请输入您要查询的作者";
-            this.textBox3.Size = new System.Drawing.Size(156, 27);
-            this.textBox3.TabIndex = 8;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(625, 373);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.PlaceholderText = "请输入您要查询的编号";
-            this.textBox4.Size = new System.Drawing.Size(156, 27);
-            this.textBox4.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(520, 373);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 24);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "编号查询：";
             // 
             // winform_BookManage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(800, 439);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button_refresh);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(622, 373);
+            this.Controls.Add(this.maskedTextBox2);
+            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label_search_isbm);
             this.Controls.Add(this.label_search);
@@ -259,10 +209,9 @@
             this.Controls.Add(this.button_dele);
             this.Controls.Add(this.button_add);
             this.Controls.Add(this.form_book);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "winform_BookManage";
             this.Text = "图书管理页面";
-            this.Load += new System.EventHandler(this.winform_BookManage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.form_book)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -283,13 +232,8 @@
         private Button button_revise;
         private Label label_search;
         private Label label_search_isbm;
+        private MaskedTextBox maskedTextBox1;//书名查询
+        private MaskedTextBox maskedTextBox2;//ISBM查询
         private Label label1;
-        private TextBox textBox1; //查书名
-        private TextBox textBox2;//ISBN
-        private Button button_refresh;
-        private Label label2;
-        private TextBox textBox3;//作者
-        private TextBox textBox4;//编号（索书号）
-        private Label label3;
     }
 }

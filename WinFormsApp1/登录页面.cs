@@ -74,15 +74,15 @@ namespace WinFormsApp1
             textBox1.Focus();
             //string b = "";
             //var aa = from book in LibraryDbContext.Shared.Books
-                     //where book.CategoryID == 1
-                    // select new { Name = book.Name, ID = book.BookID };
-           // foreach (var a in aa)
+            //         where book.CategoryID == 1
+            //         select new { Name = book.Name, ID = book.BookID };
+            //foreach (var a in aa)
             //{
-               // b+= a+"\n";
-           // }
-           // MessageBox.Show(b);
+            //    b+= a+"\n";
+            //}
+            //MessageBox.Show(b);
         }
-       
+
         private void button_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
