@@ -37,12 +37,6 @@
             this.button_dele1 = new System.Windows.Forms.Button();
             this.button_add1 = new System.Windows.Forms.Button();
             this.form_record = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.form_record)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,60 +121,18 @@
             this.form_record.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.form_record.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.form_record.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.form_record.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
             this.form_record.Dock = System.Windows.Forms.DockStyle.Left;
             this.form_record.Location = new System.Drawing.Point(0, 0);
             this.form_record.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.form_record.MultiSelect = false;
             this.form_record.Name = "form_record";
+            this.form_record.ReadOnly = true;
             this.form_record.RowHeadersVisible = false;
             this.form_record.RowHeadersWidth = 51;
             this.form_record.RowTemplate.Height = 29;
             this.form_record.Size = new System.Drawing.Size(394, 371);
             this.form_record.TabIndex = 1;
             this.form_record.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.form_book_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "书名";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "学号";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "书的编号";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "借书时长";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "应还日期";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "是否已还";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
             // 
             // winform_BorrowLogManage
             // 
@@ -199,6 +151,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "winform_BorrowLogManage";
             this.Text = "借书记录管理系统";
+            this.Load += new System.EventHandler(this.winform_BorrowLogManage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.form_record)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -214,11 +167,5 @@
         private Button button_dele1;
         private Button button_add1;
         private DataGridView form_record;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
     }
 }

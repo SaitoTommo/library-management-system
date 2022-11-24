@@ -24,7 +24,7 @@ namespace WinFormsApp1
         
         [Key]
         [Required]
-        public string ID { get; set; }
+        public int ID { get; set; }
 
         /// <summary>
         /// 借书的人的账号唯一标识
@@ -33,9 +33,16 @@ namespace WinFormsApp1
         public Account Account { get; set; }
         public int BorrowerID { get; set; }
 
-        [ForeignKey("BookID")]
+        [ForeignKey("BookId")]
         public Book Book { get; set; }
-        public int BookID { get; set; }
+        /// <summary>
+        /// 唯一标识
+        /// </summary>
+        public int BookId { get; set; }
+        /// <summary>
+        /// 借书时间
+        /// </summary>
+        public DateTime BorrowTime { get; set; }
 
         /// <summary>
         /// 借书行为

@@ -81,7 +81,7 @@ namespace WinFormsApp1
                     CategoryID = 1,
                     Description = "Unknown",
                     ISBN = Random.Shared.Next(1000000, 9999999).ToString(),
-                    IsInLib = true,
+                    OwnerID = null,
                     Name = $"Book{Random.Shared.Next(1, 9999)}",
                     Position = 1,
                     Publisher = "华南理工大学出版社"
@@ -94,7 +94,7 @@ namespace WinFormsApp1
                     CategoryID = 1,
                     Description = "Unknown",
                     ISBN = Random.Shared.Next(1000000, 9999999).ToString(),
-                    IsInLib = true,
+                    OwnerID = null,
                     Name = $"Book{Random.Shared.Next(1, 9999)}",
                     Position = 1,
                     Publisher = "华南理工大学出版社"
@@ -107,7 +107,7 @@ namespace WinFormsApp1
                     CategoryID = 2,
                     Description = "Unknown",
                     ISBN = Random.Shared.Next(1000000, 9999999).ToString(),
-                    IsInLib = true,
+                    OwnerID = null,
                     Name = $"Book{Random.Shared.Next(1, 9999)}",
                     Position = 1,
                     Publisher = "华南理工大学出版社"
@@ -116,6 +116,10 @@ namespace WinFormsApp1
             modelBuilder.Entity<Account>().HasData(
                 new Account { AId = 1, ID = "1", Gender = "男", Name = "阿塔尼斯", RegisterDate = new DateTime(2022, 1, 1), Role = AccountRole.Admin, Password = Encryptor.SHA256Encrypt("123456X") },
                 new Account { AId = 2, ID = "2", Gender = "女", Name = "塞兰迪斯", RegisterDate = new DateTime(2022, 1, 1), Role = AccountRole.Student, Password = Encryptor.SHA256Encrypt("123456X") }
+            );
+            modelBuilder.Entity<BorrowLog>().HasData(
+                new BorrowLog { ID = 1, BookId = 1, BorrowerID = 1, BorrowTime = DateTime.Now, ActionType = BookActionType.Borrow },
+                new BorrowLog { ID = 2, BookId = 1, BorrowerID = 1, BorrowTime = DateTime.Now, ActionType = BookActionType.Return }
             );
             #endregion
         }

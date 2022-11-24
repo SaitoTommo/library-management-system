@@ -10,13 +10,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WinFormsApp1
 {
+    [PrimaryKey("Id")]
     public class Book
     {
         /// <summary>
         /// 资产编号
         /// </summary>
+        
         [Key]
         public int Id { get; set; }
+        /// <summary>
+        /// 索书号
+        /// </summary>
         public string BookID { get; set; }
         public string ISBN { get; set; }
         public string Name { get; set; }
@@ -40,9 +45,12 @@ namespace WinFormsApp1
         /// 出版社
         /// </summary>
         public string Publisher { get; set; }
+
+        [ForeignKey("OwnerID")]
+        public Account Account { get; set; }
         /// <summary>
-        /// 是否在库
+        /// 借阅人的账号标识
         /// </summary>
-        public bool IsInLib { get; set; }
+        public int? OwnerID { get; set; }
     }
 }
