@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class winform_BorrowLogManage : Form
+    public partial class winform_revise0 : Form
     {
-        public winform_BorrowLogManage()
+        public winform_revise0()
         {
             InitializeComponent();
         }
 
-        private void form_book_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void maskedTextBox11_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
         }
