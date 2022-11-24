@@ -12,23 +12,10 @@ namespace WinFormsApp1
 {
     public partial class 借书 : Form
     {
-        IQueryable<BookQueryRecord> Query;
         public 借书()
         {
             //if(Global.account == null || Global.)
             InitializeComponent();
-            //RefreshQuery();
-        }
-
-        public void RefreshQuery()
-        {
-            Query = from b in LibraryDbContext.Shared.Books
-                    join c in LibraryDbContext.Shared.Categories on b.CategoryID equals c.Id
-                    join h in LibraryDbContext.Shared.BookWareHouses on b.Position equals h.Id
-                    where b.Name.ToLower().Contains(textbox_bookqueryword.Text.ToLower())
-                    select new BookQueryRecord { book = b, wareHouse = h };
-
-            form_books.DataSource = Query.ToList();
         }
 
         private void button_search_Click(object sender, EventArgs e)
@@ -49,8 +36,8 @@ namespace WinFormsApp1
         {
             var book = ((BookQueryRecord)form_books.CurrentRow.DataBoundItem).book;
 
-            if (book.OwnerID!=null)
-            {
+            if (book.OwnerID!=null) 
+            { 
                 MessageBox.Show("此书已被借出");
                 return;
             }

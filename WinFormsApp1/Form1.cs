@@ -59,10 +59,5 @@ namespace WinFormsApp1
         {
 
         }
-
-        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
     }
 }
