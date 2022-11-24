@@ -41,5 +41,10 @@ namespace WinFormsApp1
             form_record.Columns[4].HeaderText = "学号";
             form_record.Columns[5].HeaderText = "类型";
         }
+
+        private record BorrowLogQueryRecord
+        {
+
+        }
     }
 }

@@ -54,5 +54,10 @@ namespace WinFormsApp1
             //    LibraryDbContext.Shared.Entry(Category).Collection<Book>(e => e.Books).Load();//(e => e.Books).Load();
             //}
         }
+
+        private void Gridview_Category_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
