@@ -37,10 +37,6 @@
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Gridview_Book = new System.Windows.Forms.DataGridView();
-            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iSBNDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +45,10 @@
             this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.publisherDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isInLibDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Gridview_Category)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookCategoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Gridview_Book)).BeginInit();
@@ -72,6 +71,7 @@
             this.Gridview_Category.RowTemplate.Height = 25;
             this.Gridview_Category.Size = new System.Drawing.Size(351, 767);
             this.Gridview_Category.TabIndex = 0;
+            this.Gridview_Category.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Gridview_Category_CellContentClick);
             this.Gridview_Category.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Gridview_Category_CellMouseDoubleClick);
             this.Gridview_Category.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Gridview_Category_RowHeaderMouseDoubleClick);
             this.Gridview_Category.SelectionChanged += new System.EventHandler(this.Gridview_Category_SelectionChanged);
@@ -111,8 +111,7 @@
             this.descriptionDataGridViewTextBoxColumn,
             this.positionDataGridViewTextBoxColumn,
             this.authorDataGridViewTextBoxColumn,
-            this.publisherDataGridViewTextBoxColumn,
-            this.isInLibDataGridViewCheckBoxColumn});
+            this.publisherDataGridViewTextBoxColumn});
             this.Gridview_Book.DataSource = this.booksBindingSource;
             this.Gridview_Book.Dock = System.Windows.Forms.DockStyle.Right;
             this.Gridview_Book.Location = new System.Drawing.Point(357, 25);
@@ -120,36 +119,6 @@
             this.Gridview_Book.RowTemplate.Height = 25;
             this.Gridview_Book.Size = new System.Drawing.Size(1396, 767);
             this.Gridview_Book.TabIndex = 1;
-            // 
-            // booksBindingSource
-            // 
-            this.booksBindingSource.DataMember = "Books";
-            this.booksBindingSource.DataSource = this.bookCategoryBindingSource;
-            // 
-            // menuStrip
-            // 
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.操作ToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1753, 25);
-            this.menuStrip.TabIndex = 2;
-            this.menuStrip.Text = "menuStrip1";
-            // 
-            // 操作ToolStripMenuItem
-            // 
-            this.操作ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.保存ToolStripMenuItem});
-            this.操作ToolStripMenuItem.Name = "操作ToolStripMenuItem";
-            this.操作ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.操作ToolStripMenuItem.Text = "操作";
-            // 
-            // 保存ToolStripMenuItem
-            // 
-            this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.保存ToolStripMenuItem.Text = "保存";
-            this.保存ToolStripMenuItem.Click += new System.EventHandler(this.保存ToolStripMenuItem_Click);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -200,11 +169,36 @@
             this.publisherDataGridViewTextBoxColumn.HeaderText = "Publisher";
             this.publisherDataGridViewTextBoxColumn.Name = "publisherDataGridViewTextBoxColumn";
             // 
-            // isInLibDataGridViewCheckBoxColumn
+            // booksBindingSource
             // 
-            this.isInLibDataGridViewCheckBoxColumn.DataPropertyName = "IsInLib";
-            this.isInLibDataGridViewCheckBoxColumn.HeaderText = "IsInLib";
-            this.isInLibDataGridViewCheckBoxColumn.Name = "isInLibDataGridViewCheckBoxColumn";
+            this.booksBindingSource.DataMember = "Books";
+            this.booksBindingSource.DataSource = this.bookCategoryBindingSource;
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.操作ToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1753, 25);
+            this.menuStrip.TabIndex = 2;
+            this.menuStrip.Text = "menuStrip1";
+            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
+            // 
+            // 操作ToolStripMenuItem
+            // 
+            this.操作ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.保存ToolStripMenuItem});
+            this.操作ToolStripMenuItem.Name = "操作ToolStripMenuItem";
+            this.操作ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.操作ToolStripMenuItem.Text = "操作";
+            // 
+            // 保存ToolStripMenuItem
+            // 
+            this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.保存ToolStripMenuItem.Text = "保存";
+            this.保存ToolStripMenuItem.Click += new System.EventHandler(this.保存ToolStripMenuItem_Click);
             // 
             // Form1
             // 

@@ -47,6 +47,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.form_record)).BeginInit();
             this.SuspendLayout();
             // 
+            // maskedTextBox22
+            // 
+            this.maskedTextBox22.Location = new System.Drawing.Point(492, 263);
+            this.maskedTextBox22.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.maskedTextBox22.Name = "maskedTextBox22";
+            this.maskedTextBox22.Size = new System.Drawing.Size(121, 23);
+            this.maskedTextBox22.TabIndex = 9;
+            this.maskedTextBox22.Text = "请输入要查询的日期";
+            // 
+            // maskedTextBox11
+            // 
+            this.maskedTextBox11.Location = new System.Drawing.Point(492, 212);
+            this.maskedTextBox11.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.maskedTextBox11.Name = "maskedTextBox11";
+            this.maskedTextBox11.Size = new System.Drawing.Size(121, 23);
+            this.maskedTextBox11.TabIndex = 10;
+            this.maskedTextBox11.Text = "请输入要查询的书名";
+            // 
             // label_search_isbm1
             // 
             this.label_search_isbm1.AutoSize = true;
@@ -108,18 +126,12 @@
             this.form_record.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.form_record.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.form_record.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.form_record.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
             this.form_record.Dock = System.Windows.Forms.DockStyle.Left;
             this.form_record.Location = new System.Drawing.Point(0, 0);
             this.form_record.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.form_record.MultiSelect = false;
             this.form_record.Name = "form_record";
+            this.form_record.ReadOnly = true;
             this.form_record.RowHeadersVisible = false;
             this.form_record.RowHeadersWidth = 51;
             this.form_record.RowTemplate.Height = 29;
@@ -206,6 +218,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "winform_BorrowLogManage";
             this.Text = "借书记录管理系统";
+            this.Load += new System.EventHandler(this.winform_BorrowLogManage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.form_record)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
