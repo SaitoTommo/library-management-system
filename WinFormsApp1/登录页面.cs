@@ -47,7 +47,6 @@ namespace WinFormsApp1
                             break;
                         default:
                             throw new InvalidOperationException("账户角色错误");
-                            break;
                     }
 
                     _temp = null;

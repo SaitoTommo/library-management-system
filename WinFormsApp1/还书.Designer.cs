@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(还书));
             this.form_record = new System.Windows.Forms.DataGridView();
-            this.button_back = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_back = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.form_record)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,18 +59,6 @@
             this.form_record.Size = new System.Drawing.Size(394, 366);
             this.form_record.TabIndex = 2;
             // 
-            // button_back
-            // 
-            this.button_back.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_back.Location = new System.Drawing.Point(461, 241);
-            this.button_back.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button_back.Name = "button_back";
-            this.button_back.Size = new System.Drawing.Size(104, 48);
-            this.button_back.TabIndex = 3;
-            this.button_back.Text = "归还图书";
-            this.button_back.UseVisualStyleBackColor = true;
-            this.button_back.Click += new System.EventHandler(this.button_back_Click);
-            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "BookName";
@@ -86,6 +74,18 @@
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            // 
+            // button_back
+            // 
+            this.button_back.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button_back.Location = new System.Drawing.Point(461, 241);
+            this.button_back.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button_back.Name = "button_back";
+            this.button_back.Size = new System.Drawing.Size(104, 48);
+            this.button_back.TabIndex = 3;
+            this.button_back.Text = "归还图书";
+            this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.Click += new System.EventHandler(this.button_back_Click);
             // 
             // 还书
             // 

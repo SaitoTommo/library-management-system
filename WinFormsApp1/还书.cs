@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,32 +21,41 @@ namespace WinFormsApp1
             public BorrowLog log { get; set; }
             public DateTime BorrowTime => log.BorrowTime;
             public string BookName => book.Name;
+            public int BookID => book.Id;
         }
 
-        IQueryable<ReturnBookQueryRecord> Query;
+        //IQueryable<IGrouping<int, ReturnBookQueryRecord>> Query;
+        List<ReturnBookQueryRecord> returnBookQueryRecords = new List<ReturnBookQueryRecord>();
 
         public 还书()
         {
             InitializeComponent();
-            RefreshQuery();
         }
 
         public void RefreshQuery()
         {
-            Query =
-                from books in LibraryDbContext.Shared.Books
-                where books.OwnerID == Global.account.AId
-                join logs in LibraryDbContext.Shared.BorrowLogs on
-                new { BookId = books.Id, id = Global.account.AId, type = BookActionType.Borrow } equals new { logs.BookId, id = logs.BorrowerID, type = logs.ActionType }
-                orderby logs.BorrowTime descending
-                group logs
-                select new ReturnBookQueryRecord { book = books, log = logs };
-            form_record.DataSource = Query.ToList();
+            returnBookQueryRecords.Clear();
+            var Query = from l in LibraryDbContext.Shared.BorrowLogs
+                        where l.BorrowerID == Global.account.AId && l.ActionType == BookActionType.Borrow
+                        group l by l.BookId into grouping
+                        select grouping.OrderByDescending(a => a.BorrowTime).FirstOrDefault();
+            foreach (var item in Query)
+            {
+                if (item!=null)
+                    returnBookQueryRecords.Add(new ReturnBookQueryRecord { log=item, book = LibraryDbContext.Shared.Books.Single(b => b.Id == item.BookId && b.OwnerID == Global.account.AId) });
+            }
+            form_record.AutoGenerateColumns= false;
+            form_record.DataSource = returnBookQueryRecords;
         }
 
         private void 还书_Load(object sender, EventArgs e)
         {
+            var n = LibraryDbContext.Shared.Books.Where(b => b.OwnerID == Global.account.AId).Count();
+            if (n == 0)
+                return;
+
             form_record.AutoGenerateColumns= false;
+            RefreshQuery();
         }
 
         private async void button_back_Click(object sender, EventArgs e)
