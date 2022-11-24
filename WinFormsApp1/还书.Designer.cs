@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(还书));
             this.form_record = new System.Windows.Forms.DataGridView();
+            this.button_back = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button_back = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.form_record)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,46 +49,56 @@
             this.Column2});
             this.form_record.Dock = System.Windows.Forms.DockStyle.Left;
             this.form_record.Location = new System.Drawing.Point(0, 0);
+            this.form_record.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.form_record.MultiSelect = false;
             this.form_record.Name = "form_record";
+            this.form_record.ReadOnly = true;
             this.form_record.RowHeadersVisible = false;
             this.form_record.RowHeadersWidth = 51;
             this.form_record.RowTemplate.Height = 29;
-            this.form_record.Size = new System.Drawing.Size(506, 431);
+            this.form_record.Size = new System.Drawing.Size(394, 366);
             this.form_record.TabIndex = 2;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "书名";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "日期";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
             // 
             // button_back
             // 
             this.button_back.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_back.Location = new System.Drawing.Point(593, 284);
+            this.button_back.Location = new System.Drawing.Point(461, 241);
+            this.button_back.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button_back.Name = "button_back";
-            this.button_back.Size = new System.Drawing.Size(134, 57);
+            this.button_back.Size = new System.Drawing.Size(104, 48);
             this.button_back.TabIndex = 3;
             this.button_back.Text = "归还图书";
             this.button_back.UseVisualStyleBackColor = true;
+            this.button_back.Click += new System.EventHandler(this.button_back_Click);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "BookName";
+            this.Column1.HeaderText = "书名";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "BorrowTime";
+            this.Column2.HeaderText = "日期";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // 还书
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(800, 431);
+            this.ClientSize = new System.Drawing.Size(622, 366);
             this.Controls.Add(this.button_back);
             this.Controls.Add(this.form_record);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "还书";
             this.Text = "还书页面";
+            this.Load += new System.EventHandler(this.还书_Load);
             ((System.ComponentModel.ISupportInitialize)(this.form_record)).EndInit();
             this.ResumeLayout(false);
 
@@ -97,8 +107,8 @@
         #endregion
 
         private DataGridView form_record;
+        private Button button_back;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
-        private Button button_back;
     }
 }
