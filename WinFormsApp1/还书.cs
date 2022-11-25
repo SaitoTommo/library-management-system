@@ -18,14 +18,17 @@ namespace WinFormsApp1
         private record ReturnBookQueryRecord
         {
             public Book book { get; set; }
-            public BorrowLog log { get; set; }
-            public DateTime BorrowTime => log.BorrowTime;
+            //public BorrowLog log { get; set; }
+            public DateTime BorrowTime { get; set; }// => log.BorrowTime;
+
+            public int LogId { get; set; }
+
             public string BookName => book.Name;
             public int BookID => book.Id;
         }
 
         //IQueryable<IGrouping<int, ReturnBookQueryRecord>> Query;
-        List<ReturnBookQueryRecord> returnBookQueryRecords = new List<ReturnBookQueryRecord>();
+        //List<ReturnBookQueryRecord> returnBookQueryRecords = new List<ReturnBookQueryRecord>();
 
         public 还书()
         {
@@ -34,18 +37,25 @@ namespace WinFormsApp1
 
         public void RefreshQuery()
         {
-            returnBookQueryRecords.Clear();
-            var Query = from l in LibraryDbContext.Shared.BorrowLogs
-                        where l.BorrowerID == Global.account.AId && l.ActionType == BookActionType.Borrow
-                        group l by l.BookId into grouping
-                        select grouping.OrderByDescending(a => a.BorrowTime).FirstOrDefault();
-            foreach (var item in Query)
-            {
-                if (item!=null)
-                    returnBookQueryRecords.Add(new ReturnBookQueryRecord { log=item, book = LibraryDbContext.Shared.Books.Single(b => b.Id == item.BookId && b.OwnerID == Global.account.AId) });
-            }
+            //returnBookQueryRecords.Clear();
+
+            /* 对应语句
+             * select max(l.borrowtime), l.BookId, l.id from borrowlogs l 
+             * inner join books b 
+             * on l.BookId = b.id and b.ownerid = 2 
+             * group by l.bookid
+             */
+
+            var Query = from book in LibraryDbContext.Shared.Books
+                        join log in LibraryDbContext.Shared.BorrowLogs
+                        on new { id = book.OwnerID, bid = book.Id, type = BookActionType.Borrow } equals new { id = (int?)Global.account.AId, bid = log.BookId, type = log.ActionType }
+                        group log by book into g
+                        select new ReturnBookQueryRecord { book = g.Key, BorrowTime = g.Max(e => e.BorrowTime), LogId = g.Max(e => e.ID) };
+
+            //if (Query.ToList().Count()<=0) return;
+
             form_record.AutoGenerateColumns= false;
-            form_record.DataSource = returnBookQueryRecords;
+            form_record.DataSource = Query.ToList();
         }
 
         private void 还书_Load(object sender, EventArgs e)
