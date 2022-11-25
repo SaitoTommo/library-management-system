@@ -30,11 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(借书));
             this.form_books = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textbox_bookqueryword = new System.Windows.Forms.TextBox();
-            this.button_search = new System.Windows.Forms.Button();
-            this.button_borrow = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CanBeBorrowed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -43,6 +38,11 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textbox_bookqueryword = new System.Windows.Forms.TextBox();
+            this.button_search = new System.Windows.Forms.Button();
+            this.button_borrow = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.form_books)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -67,70 +67,14 @@
             this.form_books.Dock = System.Windows.Forms.DockStyle.Fill;
             this.form_books.Location = new System.Drawing.Point(0, 0);
             this.form_books.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.form_books.MultiSelect = false;
             this.form_books.Name = "form_books";
             this.form_books.ReadOnly = true;
             this.form_books.RowHeadersVisible = false;
             this.form_books.RowHeadersWidth = 51;
             this.form_books.RowTemplate.Height = 29;
+            this.form_books.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.form_books.Size = new System.Drawing.Size(422, 366);
             this.form_books.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 51);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 21);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "请输入您要查询的书名：";
-            // 
-            // textbox_bookqueryword
-            // 
-            this.textbox_bookqueryword.Location = new System.Drawing.Point(23, 97);
-            this.textbox_bookqueryword.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.textbox_bookqueryword.Name = "textbox_bookqueryword";
-            this.textbox_bookqueryword.Size = new System.Drawing.Size(157, 23);
-            this.textbox_bookqueryword.TabIndex = 5;
-            // 
-            // button_search
-            // 
-            this.button_search.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_search.Location = new System.Drawing.Point(53, 126);
-            this.button_search.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button_search.Name = "button_search";
-            this.button_search.Size = new System.Drawing.Size(100, 37);
-            this.button_search.TabIndex = 6;
-            this.button_search.Text = "点击查询";
-            this.button_search.UseVisualStyleBackColor = true;
-            this.button_search.Click += new System.EventHandler(this.button_search_Click);
-            // 
-            // button_borrow
-            // 
-            this.button_borrow.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_borrow.Location = new System.Drawing.Point(53, 215);
-            this.button_borrow.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.button_borrow.Name = "button_borrow";
-            this.button_borrow.Size = new System.Drawing.Size(100, 63);
-            this.button_borrow.TabIndex = 7;
-            this.button_borrow.Text = "借出图书";
-            this.button_borrow.UseVisualStyleBackColor = true;
-            this.button_borrow.Click += new System.EventHandler(this.button_borrow_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button_search);
-            this.panel1.Controls.Add(this.textbox_bookqueryword);
-            this.panel1.Controls.Add(this.button_borrow);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(422, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 366);
-            this.panel1.TabIndex = 8;
             // 
             // Column1
             // 
@@ -193,6 +137,62 @@
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 51);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(186, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "请输入您要查询的书名：";
+            // 
+            // textbox_bookqueryword
+            // 
+            this.textbox_bookqueryword.Location = new System.Drawing.Point(23, 97);
+            this.textbox_bookqueryword.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.textbox_bookqueryword.Name = "textbox_bookqueryword";
+            this.textbox_bookqueryword.Size = new System.Drawing.Size(157, 23);
+            this.textbox_bookqueryword.TabIndex = 5;
+            // 
+            // button_search
+            // 
+            this.button_search.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button_search.Location = new System.Drawing.Point(53, 126);
+            this.button_search.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button_search.Name = "button_search";
+            this.button_search.Size = new System.Drawing.Size(100, 37);
+            this.button_search.TabIndex = 6;
+            this.button_search.Text = "点击查询";
+            this.button_search.UseVisualStyleBackColor = true;
+            this.button_search.Click += new System.EventHandler(this.button_search_Click);
+            // 
+            // button_borrow
+            // 
+            this.button_borrow.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button_borrow.Location = new System.Drawing.Point(53, 215);
+            this.button_borrow.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button_borrow.Name = "button_borrow";
+            this.button_borrow.Size = new System.Drawing.Size(100, 63);
+            this.button_borrow.TabIndex = 7;
+            this.button_borrow.Text = "借出图书";
+            this.button_borrow.UseVisualStyleBackColor = true;
+            this.button_borrow.Click += new System.EventHandler(this.button_borrow_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button_search);
+            this.panel1.Controls.Add(this.textbox_bookqueryword);
+            this.panel1.Controls.Add(this.button_borrow);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(422, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 366);
+            this.panel1.TabIndex = 8;
             // 
             // 借书
             // 

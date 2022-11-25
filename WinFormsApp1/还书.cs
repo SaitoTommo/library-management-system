@@ -15,6 +15,9 @@ namespace WinFormsApp1
 {
     public partial class 还书 : Form
     {
+
+        IQueryable<ReturnBookQueryRecord> Query;
+
         private record ReturnBookQueryRecord
         {
             public Book book { get; set; }
@@ -35,30 +38,6 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-        public void RefreshQuery()
-        {
-            //returnBookQueryRecords.Clear();
-
-            /* 对应语句
-             * select max(l.borrowtime), l.BookId, l.id from borrowlogs l 
-             * inner join books b 
-             * on l.BookId = b.id and b.ownerid = 2 
-             * group by l.bookid
-             */
-
-            var Query = from book in LibraryDbContext.Shared.Books
-                        join log in LibraryDbContext.Shared.BorrowLogs
-                        on new { id = book.OwnerID, bid = book.Id, type = BookActionType.Borrow }
-                        equals new { id = (int?)Global.account.AId, bid = log.BookId, type = log.ActionType }
-                        group new { log.ID, log.BorrowTime } by book into g
-                        select new ReturnBookQueryRecord { book = g.Key, BorrowTime = g.Max(e => e.BorrowTime), LogId = g.Max(e => e.ID) };
-
-            //if (Query.ToList().Count()<=0) return;
-
-            form_record.AutoGenerateColumns= false;
-            form_record.DataSource = Query.ToList();
-        }
-
         private void 还书_Load(object sender, EventArgs e)
         {
             var n = LibraryDbContext.Shared.Books.Where(b => b.OwnerID == Global.account.AId).Count();
@@ -66,26 +45,43 @@ namespace WinFormsApp1
                 return;
 
             form_record.AutoGenerateColumns= false;
-            RefreshQuery();
+            /* 对应语句
+             * select max(l.borrowtime), l.BookId, l.id from borrowlogs l 
+             * inner join books b 
+             * on l.BookId = b.id and b.ownerid = 2 
+             * group by l.bookid
+             */
+
+            Query = from book in LibraryDbContext.Shared.Books
+                    join log in LibraryDbContext.Shared.BorrowLogs
+                    on new { id = book.OwnerID, bid = book.Id, type = BookActionType.Borrow }
+                    equals new { id = (int?)Global.account.AId, bid = log.BookId, type = log.ActionType }
+                    group new { log.ID, log.BorrowTime } by book into g
+                    select new ReturnBookQueryRecord { book = g.Key, BorrowTime = g.Max(e => e.BorrowTime), LogId = g.Max(e => e.ID) };
+
+            //if (Query.ToList().Count()<=0) return;
+
+            form_record.AutoGenerateColumns= false;
+            form_record.DataSource = Query.ToList();
         }
 
         private async void button_back_Click(object sender, EventArgs e)
         {
-            if (form_record.SelectedCells.Count<=0) return;
+            if (form_record.SelectedRows.Count<=0) return;
             //MessageBox.Show("Test");
             ReturnBookQueryRecord record;
 
-            if (form_record.SelectedCells.Count>1)
+            if (form_record.SelectedRows.Count>1)
             {
-                foreach (DataGridViewCell cell in form_record.SelectedCells)
+                foreach (DataGridViewRow row in form_record.SelectedRows)
                 {
-                    record = (ReturnBookQueryRecord)(cell.OwningRow.DataBoundItem);
+                    record = (ReturnBookQueryRecord)(row.DataBoundItem);
                     record.book.OwnerID = null;
                     LibraryDbContext.Shared.BorrowLogs.Add(new BorrowLog
                     {
                         ActionType = BookActionType.Return,
                         BookId = record.book.Id,
-                        ID = Global.account.AId,
+                        BorrowerID = Global.account.AId,
                         BorrowTime = DateTime.Now
                     });
                 }
@@ -105,7 +101,7 @@ namespace WinFormsApp1
                 LibraryDbContext.Shared.SaveChanges();
             }
 
-            RefreshQuery();
+            form_record.Refresh();
         }
 
 

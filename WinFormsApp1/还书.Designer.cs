@@ -52,12 +52,12 @@
             this.form_record.Dock = System.Windows.Forms.DockStyle.Fill;
             this.form_record.Location = new System.Drawing.Point(0, 0);
             this.form_record.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.form_record.MultiSelect = false;
             this.form_record.Name = "form_record";
             this.form_record.ReadOnly = true;
             this.form_record.RowHeadersVisible = false;
             this.form_record.RowHeadersWidth = 51;
             this.form_record.RowTemplate.Height = 29;
+            this.form_record.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.form_record.Size = new System.Drawing.Size(411, 366);
             this.form_record.TabIndex = 2;
             // 

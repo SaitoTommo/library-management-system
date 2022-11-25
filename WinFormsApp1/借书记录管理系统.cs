@@ -14,6 +14,7 @@ namespace WinFormsApp1
 {
     public partial class winform_BorrowLogManage : Form
     {
+        IQueryable<BorrowLogQueryRecord> BorrowLogs;
         public winform_BorrowLogManage()
         {
             InitializeComponent();
@@ -26,25 +27,28 @@ namespace WinFormsApp1
 
         private void winform_BorrowLogManage_Load(object sender, EventArgs e)
         {
+            form_record.AutoGenerateColumns= false;
             //LibraryDbContext.Shared.BorrowLogs.Load();
             //this.borrowLogBindingSource.DataSource = LibraryDbContext.Shared.BorrowLogs.Local.ToBindingList();
-            var BorrowLogs = from BLog in LibraryDbContext.Shared.BorrowLogs
-                             join book in LibraryDbContext.Shared.Books on BLog.BookId equals book.Id
-                             join acc in LibraryDbContext.Shared.Accounts on BLog.BorrowerID equals acc.AId
-                             select new { Date = BLog.BorrowTime, BookName = book.Name, BookID = book.BookID, BorrowerName = acc.Name, BorrowerID = acc.ID, ActionType = BLog.ActionType == BookActionType.Borrow ? "借" : "还" };
+            BorrowLogs = from BLog in LibraryDbContext.Shared.BorrowLogs
+                         join book in LibraryDbContext.Shared.Books on BLog.BookId equals book.Id
+                         join acc in LibraryDbContext.Shared.Accounts on BLog.BorrowerID equals acc.AId
+                         select new BorrowLogQueryRecord { log = BLog, book = book, AssosiatedAccount = acc };
             //form_record.DataSource = BorrowLogs;
             form_record.DataSource = BorrowLogs.ToList();
-            form_record.Columns[0].HeaderText = "日期";
-            form_record.Columns[1].HeaderText = "书名";
-            form_record.Columns[2].HeaderText = "索书号";
-            form_record.Columns[3].HeaderText = "姓名";
-            form_record.Columns[4].HeaderText = "学号";
-            form_record.Columns[5].HeaderText = "类型";
         }
 
         private record BorrowLogQueryRecord
         {
+            public BorrowLog log { get; set; }
+            public Account AssosiatedAccount { get; set; }
+            public Book book { get; set; }
 
+            public DateTime BorrowTime => log.BorrowTime;
+            public string Reader => $"{AssosiatedAccount.ID} | {AssosiatedAccount.Name}";
+            public string ActionType => log.ActionType == BookActionType.Borrow ? "借出" : "归还";
+            public string BookName => book.Name;
+            public string BookID => book.BookID;
         }
     }
 }
