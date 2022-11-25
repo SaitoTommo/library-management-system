@@ -188,6 +188,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(117, 23);
             this.dateTimePicker1.TabIndex = 11;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // Textbox_Querybyname
             // 
@@ -195,6 +196,7 @@
             this.Textbox_Querybyname.Name = "Textbox_Querybyname";
             this.Textbox_Querybyname.Size = new System.Drawing.Size(117, 23);
             this.Textbox_Querybyname.TabIndex = 9;
+            this.Textbox_Querybyname.TextChanged += new System.EventHandler(this.Textbox_Querybyname_TextChanged);
             // 
             // button_ResetQuery
             // 
@@ -204,6 +206,7 @@
             this.button_ResetQuery.TabIndex = 12;
             this.button_ResetQuery.Text = "重置查询条件";
             this.button_ResetQuery.UseVisualStyleBackColor = true;
+            this.button_ResetQuery.Click += new System.EventHandler(this.button_ResetQuery_Click);
             // 
             // winform_BorrowLogManage
             // 

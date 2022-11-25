@@ -38,6 +38,27 @@ namespace WinFormsApp1
             form_record.DataSource = BorrowLogs.ToList();
         }
 
+        private void Textbox_Querybyname_TextChanged(object sender, EventArgs e)
+        {
+            if ((sender as TextBox).Text == string.Empty)
+                form_record.DataSource = BorrowLogs.ToList();
+            else
+                form_record.DataSource = BorrowLogs.Where(e => e.book.Name.ToLower().Contains(Textbox_Querybyname.Text.ToLower())).ToList();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            //BorrowLogs.Load();
+            form_record.DataSource= BorrowLogs.ToList().Where(e => e.BorrowTime.Date.Equals(dateTimePicker1.Value.Date));
+        }
+
+        private void button_ResetQuery_Click(object sender, EventArgs e)
+        {
+            form_record.DataSource = BorrowLogs.ToList();
+            Textbox_Querybyname.Text = string.Empty;
+            dateTimePicker1.Value = DateTime.Now;
+        }
+
         private record BorrowLogQueryRecord
         {
             public BorrowLog log { get; set; }
