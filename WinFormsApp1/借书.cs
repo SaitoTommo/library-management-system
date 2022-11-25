@@ -89,6 +89,7 @@ namespace WinFormsApp1
 
             public string BookName => book.Name;
             public string Author => book.Author;
+            public string Category => LibraryDbContext.Shared.Categories.Single(c => c.Id == book.CategoryID).Name;
             public string Publisher => book.Publisher;
             public string ISBN => book.ISBN;
             public string BookID => book.BookID;

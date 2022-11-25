@@ -48,9 +48,9 @@ namespace WinFormsApp1
 
             var Query = from book in LibraryDbContext.Shared.Books
                         join log in LibraryDbContext.Shared.BorrowLogs
-                        on new { id = book.OwnerID, bid = book.Id, type = BookActionType.Borrow } 
+                        on new { id = book.OwnerID, bid = book.Id, type = BookActionType.Borrow }
                         equals new { id = (int?)Global.account.AId, bid = log.BookId, type = log.ActionType }
-                        group log by book into g
+                        group new { log.ID, log.BorrowTime } by book into g
                         select new ReturnBookQueryRecord { book = g.Key, BorrowTime = g.Max(e => e.BorrowTime), LogId = g.Max(e => e.ID) };
 
             //if (Query.ToList().Count()<=0) return;

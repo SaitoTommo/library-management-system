@@ -30,18 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(借书));
             this.form_books = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textbox_bookqueryword = new System.Windows.Forms.TextBox();
+            this.button_search = new System.Windows.Forms.Button();
+            this.button_borrow = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CanBeBorrowed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textbox_bookqueryword = new System.Windows.Forms.TextBox();
-            this.button_search = new System.Windows.Forms.Button();
-            this.button_borrow = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.form_books)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +57,7 @@
             this.form_books.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.form_books.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.Category,
             this.CanBeBorrowed,
             this.Column2,
             this.Column3,
@@ -73,61 +75,6 @@
             this.form_books.RowTemplate.Height = 29;
             this.form_books.Size = new System.Drawing.Size(422, 366);
             this.form_books.TabIndex = 1;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "BookName";
-            this.Column1.HeaderText = "书名";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // CanBeBorrowed
-            // 
-            this.CanBeBorrowed.DataPropertyName = "CanBeBorrowed";
-            this.CanBeBorrowed.HeaderText = "是否可借";
-            this.CanBeBorrowed.Name = "CanBeBorrowed";
-            this.CanBeBorrowed.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Author";
-            this.Column2.HeaderText = "作者";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Publisher";
-            this.Column3.HeaderText = "出版社";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "ISBN";
-            this.Column4.HeaderText = "ISBN";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "BookID";
-            this.Column5.HeaderText = "编号";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Position";
-            this.Column6.HeaderText = "位置";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
             // 
             // label1
             // 
@@ -185,6 +132,68 @@
             this.panel1.Size = new System.Drawing.Size(200, 366);
             this.panel1.TabIndex = 8;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "BookName";
+            this.Column1.HeaderText = "书名";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "分类";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
+            // CanBeBorrowed
+            // 
+            this.CanBeBorrowed.DataPropertyName = "CanBeBorrowed";
+            this.CanBeBorrowed.HeaderText = "是否可借";
+            this.CanBeBorrowed.Name = "CanBeBorrowed";
+            this.CanBeBorrowed.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Author";
+            this.Column2.HeaderText = "作者";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Publisher";
+            this.Column3.HeaderText = "出版社";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "ISBN";
+            this.Column4.HeaderText = "ISBN";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "BookID";
+            this.Column5.HeaderText = "编号";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Position";
+            this.Column6.HeaderText = "位置";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
             // 借书
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -211,13 +220,14 @@
         private TextBox textbox_bookqueryword;
         private Button button_search;//查询
         private Button button_borrow;//借出
+        private Panel panel1;
         private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Category;
         private DataGridViewCheckBoxColumn CanBeBorrowed;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
-        private Panel panel1;
     }
 }
