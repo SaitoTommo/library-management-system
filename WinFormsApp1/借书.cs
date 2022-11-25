@@ -20,7 +20,7 @@ namespace WinFormsApp1
             //RefreshQuery();
         }
 
-        public void RefreshQuery()
+        public void SearchQuery()
         {
             Query = from b in LibraryDbContext.Shared.Books
                     join c in LibraryDbContext.Shared.Categories on b.CategoryID equals c.Id
@@ -33,16 +33,17 @@ namespace WinFormsApp1
 
         private void button_search_Click(object sender, EventArgs e)
         {
-            var Query = from b in LibraryDbContext.Shared.Books
-                        join c in LibraryDbContext.Shared.Categories on b.CategoryID equals c.Id
-                        join h in LibraryDbContext.Shared.BookWareHouses on b.Position equals h.Id
-                        where b.Name.ToLower().Contains(textbox_bookqueryword.Text.ToLower())
-                        select new BookQueryRecord { book = b, wareHouse = h };
+            //var Query = from b in LibraryDbContext.Shared.Books
+            //            join c in LibraryDbContext.Shared.Categories on b.CategoryID equals c.Id
+            //            join h in LibraryDbContext.Shared.BookWareHouses on b.Position equals h.Id
+            //            where b.Name.ToLower().Contains(textbox_bookqueryword.Text.ToLower())
+            //            select new BookQueryRecord { book = b, wareHouse = h };
 
-            MessageBox.Show($"共查询到{Query.Count()}本书");
+            //MessageBox.Show($"共查询到{Query.Count()}本书");
 
-            form_books.AutoGenerateColumns = false;
-            form_books.DataSource= Query.ToList();
+            //form_books.AutoGenerateColumns = false;
+            //form_books.DataSource= Query.ToList();
+            SearchQuery();
         }
 
         private void button_borrow_Click(object sender, EventArgs e)
@@ -67,6 +68,18 @@ namespace WinFormsApp1
             });
 
             LibraryDbContext.Shared.SaveChanges();
+            SearchQuery();
+        }
+
+        private void 借书_Load(object sender, EventArgs e)
+        {
+            form_books.AutoGenerateColumns = false;
+            var q = from b in LibraryDbContext.Shared.Books
+                    join h in LibraryDbContext.Shared.BookWareHouses
+                    on b.Position equals h.Id
+                    select new BookQueryRecord { book = b, wareHouse = h };
+
+            form_books.DataSource = q.ToList();
         }
 
         private record BookQueryRecord
