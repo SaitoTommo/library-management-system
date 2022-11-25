@@ -41,9 +41,10 @@
             this.BookName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button_ResetQuery = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.Textbox_Querybyname = new System.Windows.Forms.TextBox();
-            this.button_ResetQuery = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.form_record)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -168,6 +169,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button_ResetQuery);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.Textbox_Querybyname);
@@ -181,6 +183,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(225, 371);
             this.panel1.TabIndex = 11;
+            // 
+            // button_ResetQuery
+            // 
+            this.button_ResetQuery.Location = new System.Drawing.Point(13, 299);
+            this.button_ResetQuery.Name = "button_ResetQuery";
+            this.button_ResetQuery.Size = new System.Drawing.Size(192, 26);
+            this.button_ResetQuery.TabIndex = 12;
+            this.button_ResetQuery.Text = "重置查询条件";
+            this.button_ResetQuery.UseVisualStyleBackColor = true;
+            this.button_ResetQuery.Click += new System.EventHandler(this.button_ResetQuery_Click);
             // 
             // dateTimePicker1
             // 
@@ -198,15 +210,14 @@
             this.Textbox_Querybyname.TabIndex = 9;
             this.Textbox_Querybyname.TextChanged += new System.EventHandler(this.Textbox_Querybyname_TextChanged);
             // 
-            // button_ResetQuery
+            // label1
             // 
-            this.button_ResetQuery.Location = new System.Drawing.Point(13, 299);
-            this.button_ResetQuery.Name = "button_ResetQuery";
-            this.button_ResetQuery.Size = new System.Drawing.Size(192, 26);
-            this.button_ResetQuery.TabIndex = 12;
-            this.button_ResetQuery.Text = "重置查询条件";
-            this.button_ResetQuery.UseVisualStyleBackColor = true;
-            this.button_ResetQuery.Click += new System.EventHandler(this.button_ResetQuery_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(47, 328);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 17);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "暂不支持复合条件查询";
             // 
             // winform_BorrowLogManage
             // 
@@ -243,5 +254,6 @@
         private DateTimePicker dateTimePicker1;
         private TextBox Textbox_Querybyname;
         private Button button_ResetQuery;
+        private Label label1;
     }
 }
