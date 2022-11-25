@@ -39,7 +39,7 @@ namespace WinFormsApp1
             // button_clear
             // 
             this.button_clear.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_clear.Location = new System.Drawing.Point(369, 319);
+            this.button_clear.Location = new System.Drawing.Point(334, 326);
             this.button_clear.Name = "button_clear";
             this.button_clear.Size = new System.Drawing.Size(103, 40);
             this.button_clear.TabIndex = 25;
@@ -49,7 +49,7 @@ namespace WinFormsApp1
             // button_revise
             // 
             this.button_revise.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_revise.Location = new System.Drawing.Point(196, 319);
+            this.button_revise.Location = new System.Drawing.Point(150, 326);
             this.button_revise.Name = "button_revise";
             this.button_revise.Size = new System.Drawing.Size(104, 40);
             this.button_revise.TabIndex = 24;
@@ -58,53 +58,53 @@ namespace WinFormsApp1
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(299, 262);
+            this.textBox6.Location = new System.Drawing.Point(277, 269);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(160, 27);
+            this.textBox6.Size = new System.Drawing.Size(160, 23);
             this.textBox6.TabIndex = 23;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(299, 221);
+            this.textBox5.Location = new System.Drawing.Point(277, 228);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(160, 27);
+            this.textBox5.Size = new System.Drawing.Size(160, 23);
             this.textBox5.TabIndex = 22;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(299, 179);
+            this.textBox4.Location = new System.Drawing.Point(277, 186);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(160, 27);
+            this.textBox4.Size = new System.Drawing.Size(160, 23);
             this.textBox4.TabIndex = 21;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(299, 138);
+            this.textBox3.Location = new System.Drawing.Point(277, 145);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(160, 27);
+            this.textBox3.Size = new System.Drawing.Size(160, 23);
             this.textBox3.TabIndex = 20;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(299, 94);
+            this.textBox2.Location = new System.Drawing.Point(277, 101);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(160, 27);
+            this.textBox2.Size = new System.Drawing.Size(160, 23);
             this.textBox2.TabIndex = 19;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(299, 52);
+            this.textBox1.Location = new System.Drawing.Point(277, 59);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 27);
+            this.textBox1.Size = new System.Drawing.Size(160, 23);
             this.textBox1.TabIndex = 18;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(172, 265);
+            this.label5.Location = new System.Drawing.Point(150, 272);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 24);
+            this.label5.Size = new System.Drawing.Size(84, 20);
             this.label5.TabIndex = 12;
             this.label5.Text = "是否已还：";
             // 
@@ -112,9 +112,9 @@ namespace WinFormsApp1
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(172, 222);
+            this.label4.Location = new System.Drawing.Point(150, 229);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 24);
+            this.label4.Size = new System.Drawing.Size(84, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "应还日期：";
             // 
@@ -122,9 +122,9 @@ namespace WinFormsApp1
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(172, 179);
+            this.label3.Location = new System.Drawing.Point(150, 186);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 24);
+            this.label3.Size = new System.Drawing.Size(84, 20);
             this.label3.TabIndex = 14;
             this.label3.Text = "借书时长：";
             // 
@@ -132,9 +132,9 @@ namespace WinFormsApp1
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(196, 138);
+            this.label2.Location = new System.Drawing.Point(150, 145);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 24);
+            this.label2.Size = new System.Drawing.Size(54, 20);
             this.label2.TabIndex = 15;
             this.label2.Text = "编号：";
             // 
@@ -142,9 +142,9 @@ namespace WinFormsApp1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(196, 93);
+            this.label1.Location = new System.Drawing.Point(150, 101);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 24);
+            this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 16;
             this.label1.Text = "学号：";
             // 
@@ -152,16 +152,16 @@ namespace WinFormsApp1
             // 
             this.label_search.AutoSize = true;
             this.label_search.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_search.Location = new System.Drawing.Point(196, 52);
+            this.label_search.Location = new System.Drawing.Point(150, 59);
             this.label_search.Name = "label_search";
-            this.label_search.Size = new System.Drawing.Size(64, 24);
+            this.label_search.Size = new System.Drawing.Size(54, 20);
             this.label_search.TabIndex = 17;
             this.label_search.Text = "书名：";
             // 
             // winform_revise
             // 
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(654, 410);
+            this.ClientSize = new System.Drawing.Size(597, 433);
             this.Controls.Add(this.button_clear);
             this.Controls.Add(this.button_revise);
             this.Controls.Add(this.textBox6);

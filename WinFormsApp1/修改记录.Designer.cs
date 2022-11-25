@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1
 {
-    partial class winform_revise1
+    partial class winform_revise1:Form
     {
         /// <summary>
         /// Required designer variable.
