@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class winform_add : Form
+    public partial class winform_addLog : Form
     {
-        public winform_add()
+        public winform_addLog()
         {
             InitializeComponent();
         }

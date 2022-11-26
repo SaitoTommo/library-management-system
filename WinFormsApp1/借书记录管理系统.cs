@@ -15,14 +15,12 @@ namespace WinFormsApp1
     public partial class winform_BorrowLogManage : Form
     {
         IQueryable<BorrowLogQueryRecord> BorrowLogs;
+        IQueryable<BorrowLogQueryRecord> SearchQuery;
+        bool QueryFlag;
+
         public winform_BorrowLogManage()
         {
             InitializeComponent();
-        }
-
-        private void form_book_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void winform_BorrowLogManage_Load(object sender, EventArgs e)
@@ -38,18 +36,27 @@ namespace WinFormsApp1
             form_record.DataSource = BorrowLogs.ToList();
         }
 
-        private void Textbox_Querybyname_TextChanged(object sender, EventArgs e)
+        private void UnionQuery(object sender, EventArgs e)
         {
-            if ((sender as TextBox).Text == string.Empty)
-                form_record.DataSource = BorrowLogs.ToList();
-            else
-                form_record.DataSource = BorrowLogs.Where(e => e.book.Name.ToLower().Contains(Textbox_Querybyname.Text.ToLower())).ToList();
-        }
+            toolStripStatusLabel_LogNumber.Text = "查询中...";
+            SearchQuery =
+                (
+                    from log in BorrowLogs.ToList()
+                    where
+                    (Textbox_Querybyname.Text == string.Empty || log.BookName.ToLower().Contains(Textbox_Querybyname.Text.ToLower())) &&
+                    (!dateTimePicker1.Checked || log.BorrowTime.Date == dateTimePicker1.Value.Date) &&
+                    (textBox_QueryByReader.Text == string.Empty || log.AssosiatedAccount.Name.ToLower().Contains(textBox_QueryByReader.Text.ToLower()) || log.AssosiatedAccount.ID.ToLower().Contains(textBox_QueryByReader.Text.ToLower())) &&
+                    //(!checkBox_Borrow.Checked || log.log.ActionType == BookActionType.Borrow) || (!checkBox_Return.Checked || log.log.ActionType == BookActionType.Return)
+                    ((!checkBox_Borrow.Checked&&!checkBox_Return.Checked)||(checkBox_Borrow.Checked&&checkBox_Return.Checked))||
+                    ((!checkBox_Borrow.Checked || log.log.ActionType == BookActionType.Borrow) 
+                    && (!checkBox_Return.Checked || log.log.ActionType == BookActionType.Return))
+                    select log
+                ).AsQueryable();
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            //BorrowLogs.Load();
-            form_record.DataSource= BorrowLogs.ToList().Where(e => e.BorrowTime.Date.Equals(dateTimePicker1.Value.Date));
+            form_record.DataSource = SearchQuery.ToList();
+            QueryFlag = true;
+            toolStripStatusLabel_LogNumber.Text = $"共{SearchQuery.Count()}条记录";
+
         }
 
         private void button_ResetQuery_Click(object sender, EventArgs e)
@@ -57,6 +64,42 @@ namespace WinFormsApp1
             form_record.DataSource = BorrowLogs.ToList();
             Textbox_Querybyname.Text = string.Empty;
             dateTimePicker1.Value = DateTime.Now;
+            QueryFlag= false;
+        }
+
+        private void button_add1_Click(object sender, EventArgs e)
+        {
+            new 
+        }
+
+        private void button_dele1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_revise1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_search_isbm1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_search1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private record BorrowLogQueryRecord
