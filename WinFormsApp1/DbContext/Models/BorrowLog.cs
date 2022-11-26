@@ -26,7 +26,6 @@ namespace WinFormsApp1
         [Required]
         public int ID { get; set; }
 
-
         [ForeignKey("BorrowerID")]
         public Account Account { get; set; }
         /// <summary>

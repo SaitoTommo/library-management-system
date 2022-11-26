@@ -82,11 +82,13 @@
             // 
             // button_revise1
             // 
+            this.button_revise1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_revise1.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_revise1.Location = new System.Drawing.Point(31, 99);
+            this.button_revise1.Location = new System.Drawing.Point(4, 96);
             this.button_revise1.Margin = new System.Windows.Forms.Padding(2);
             this.button_revise1.Name = "button_revise1";
-            this.button_revise1.Size = new System.Drawing.Size(205, 38);
+            this.button_revise1.Size = new System.Drawing.Size(242, 38);
             this.button_revise1.TabIndex = 4;
             this.button_revise1.Text = "修改记录";
             this.button_revise1.UseVisualStyleBackColor = true;
@@ -94,11 +96,13 @@
             // 
             // button_dele1
             // 
+            this.button_dele1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_dele1.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_dele1.Location = new System.Drawing.Point(31, 55);
+            this.button_dele1.Location = new System.Drawing.Point(4, 52);
             this.button_dele1.Margin = new System.Windows.Forms.Padding(2);
             this.button_dele1.Name = "button_dele1";
-            this.button_dele1.Size = new System.Drawing.Size(205, 38);
+            this.button_dele1.Size = new System.Drawing.Size(242, 38);
             this.button_dele1.TabIndex = 5;
             this.button_dele1.Text = "删除记录";
             this.button_dele1.UseVisualStyleBackColor = true;
@@ -106,11 +110,13 @@
             // 
             // button_add1
             // 
+            this.button_add1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_add1.Font = new System.Drawing.Font("微软雅黑", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_add1.Location = new System.Drawing.Point(31, 11);
+            this.button_add1.Location = new System.Drawing.Point(4, 8);
             this.button_add1.Margin = new System.Windows.Forms.Padding(2);
             this.button_add1.Name = "button_add1";
-            this.button_add1.Size = new System.Drawing.Size(205, 38);
+            this.button_add1.Size = new System.Drawing.Size(242, 38);
             this.button_add1.TabIndex = 6;
             this.button_add1.Text = "添加记录";
             this.button_add1.UseVisualStyleBackColor = true;
@@ -214,7 +220,7 @@
             // checkBox_Return
             // 
             this.checkBox_Return.AutoSize = true;
-            this.checkBox_Return.Location = new System.Drawing.Point(185, 153);
+            this.checkBox_Return.Location = new System.Drawing.Point(187, 153);
             this.checkBox_Return.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox_Return.Name = "checkBox_Return";
             this.checkBox_Return.Size = new System.Drawing.Size(51, 21);
@@ -259,10 +265,12 @@
             // 
             // button_ResetQuery
             // 
-            this.button_ResetQuery.Location = new System.Drawing.Point(31, 318);
+            this.button_ResetQuery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_ResetQuery.Location = new System.Drawing.Point(4, 334);
             this.button_ResetQuery.Margin = new System.Windows.Forms.Padding(2);
             this.button_ResetQuery.Name = "button_ResetQuery";
-            this.button_ResetQuery.Size = new System.Drawing.Size(206, 26);
+            this.button_ResetQuery.Size = new System.Drawing.Size(243, 26);
             this.button_ResetQuery.TabIndex = 12;
             this.button_ResetQuery.Text = "重置查询条件";
             this.button_ResetQuery.UseVisualStyleBackColor = true;
@@ -308,6 +316,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(667, 371);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.form_record);

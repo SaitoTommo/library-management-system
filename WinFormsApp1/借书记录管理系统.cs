@@ -69,7 +69,7 @@ namespace WinFormsApp1
 
         private void button_add1_Click(object sender, EventArgs e)
         {
-            new 
+            new winform_addLog().ShowDialog(); 
         }
 
         private void button_dele1_Click(object sender, EventArgs e)
