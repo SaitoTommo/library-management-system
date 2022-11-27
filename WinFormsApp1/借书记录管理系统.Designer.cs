@@ -104,6 +104,7 @@
             this.button_dele1.TabIndex = 5;
             this.button_dele1.Text = "删除记录";
             this.button_dele1.UseVisualStyleBackColor = true;
+            this.button_dele1.Click += new System.EventHandler(this.button_dele1_Click);
             // 
             // button_add1
             // 

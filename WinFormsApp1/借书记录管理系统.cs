@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,7 +49,7 @@ namespace WinFormsApp1
                     (textBox_QueryByReader.Text == string.Empty || log.AssosiatedAccount.Name.ToLower().Contains(textBox_QueryByReader.Text.ToLower()) || log.AssosiatedAccount.ID.ToLower().Contains(textBox_QueryByReader.Text.ToLower())) &&
                     //(!checkBox_Borrow.Checked || log.log.ActionType == BookActionType.Borrow) || (!checkBox_Return.Checked || log.log.ActionType == BookActionType.Return)
                     ((!checkBox_Borrow.Checked&&!checkBox_Return.Checked)||(checkBox_Borrow.Checked&&checkBox_Return.Checked))||
-                    ((!checkBox_Borrow.Checked || log.log.ActionType == BookActionType.Borrow) 
+                    ((!checkBox_Borrow.Checked || log.log.ActionType == BookActionType.Borrow)
                     && (!checkBox_Return.Checked || log.log.ActionType == BookActionType.Return))
                     select log
                 ).AsQueryable();
@@ -64,6 +65,7 @@ namespace WinFormsApp1
             form_record.DataSource = BorrowLogs.ToList();
             Textbox_Querybyname.Text = string.Empty;
             dateTimePicker1.Value = DateTime.Now;
+            dateTimePicker1.Checked= false;
             QueryFlag= false;
         }
 
@@ -80,7 +82,7 @@ namespace WinFormsApp1
         private void button_revise1_Click(object sender, EventArgs e)
         {
             BorrowLogQueryRecord _temp;
-            foreach (DataGridViewRow r in form_record.SelectedRows) 
+            foreach (DataGridViewRow r in form_record.SelectedRows)
             {
                 _temp = r.DataBoundItem as BorrowLogQueryRecord;
 
@@ -93,6 +95,38 @@ namespace WinFormsApp1
                 form_record.DataSource = SearchQuery.ToList();
             else
                 form_record.DataSource = BorrowLogs.ToList();
+        }
+
+        private async void button_dele1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show($"你确定要删除\n{form_record.SelectedRows.Count}条记录吗？", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                /* 删除借书记录
+                 * 如果该记录为最新的一条且为借出
+                 * 则把该书的ownerid删除
+                 */
+                if (form_record.SelectedRows.Count<=0) return;
+                List<BorrowLogQueryRecord> q = null;
+
+                foreach (DataGridViewRow row in form_record.SelectedRows)
+                {
+                    BorrowLogQueryRecord r = row.DataBoundItem as BorrowLogQueryRecord;
+                    if (r.log.ActionType == BookActionType.Borrow
+                        && LibraryDbContext.Shared.BorrowLogs.Where(
+                            e => e.BookId == r.book.Id
+                            && e.BorrowerID == r.AssosiatedAccount.AId).
+                            OrderByDescending(e => e.BorrowTime).First() == r.log
+                            )
+                    {
+                        LibraryDbContext.Shared.Books.Single(e => e==r.book).OwnerID = null; //r.book.OwnerID = null;
+                    }
+                    LibraryDbContext.Shared.BorrowLogs.Remove(r.log);
+                }
+                await LibraryDbContext.Shared.SaveChangesAsync(); //防止数据过多，采用异步防止线程卡死
+                form_record.DataSource= BorrowLogs.ToList();
+            }
+            else
+                return;
         }
 
         private record BorrowLogQueryRecord
