@@ -69,37 +69,30 @@ namespace WinFormsApp1
 
         private void button_add1_Click(object sender, EventArgs e)
         {
-            new winform_addLog().ShowDialog(); 
-        }
-
-        private void button_dele1_Click(object sender, EventArgs e)
-        {
+            new Dialog_Borrowlog1().ShowDialog(this);
+            if (QueryFlag)
+                form_record.DataSource = SearchQuery.ToList();
+            else
+                form_record.DataSource = BorrowLogs.ToList();
 
         }
 
         private void button_revise1_Click(object sender, EventArgs e)
         {
+            BorrowLogQueryRecord _temp;
+            foreach (DataGridViewRow r in form_record.SelectedRows) 
+            {
+                _temp = r.DataBoundItem as BorrowLogQueryRecord;
 
-        }
+                if (_temp == null) continue;
 
-        private void label2_Click(object sender, EventArgs e)
-        {
+                new Dialog_Borrowlog1(_temp.log, _temp.AssosiatedAccount, _temp.book).ShowDialog(this);
 
-        }
-
-        private void label_search_isbm1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_search1_Click(object sender, EventArgs e)
-        {
-
+            }
+            if (QueryFlag)
+                form_record.DataSource = SearchQuery.ToList();
+            else
+                form_record.DataSource = BorrowLogs.ToList();
         }
 
         private record BorrowLogQueryRecord

@@ -101,7 +101,7 @@ namespace WinFormsApp1
                 LibraryDbContext.Shared.SaveChanges();
             }
 
-            form_record.Refresh();
+            form_record.DataSource = Query.ToList();
         }
 
 

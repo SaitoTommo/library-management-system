@@ -66,7 +66,6 @@
             this.label_search_isbm1.Size = new System.Drawing.Size(84, 20);
             this.label_search_isbm1.TabIndex = 7;
             this.label_search_isbm1.Text = "日期查询：";
-            this.label_search_isbm1.Click += new System.EventHandler(this.label_search_isbm1_Click);
             // 
             // label_search1
             // 
@@ -78,7 +77,6 @@
             this.label_search1.Size = new System.Drawing.Size(84, 20);
             this.label_search1.TabIndex = 8;
             this.label_search1.Text = "书名查询：";
-            this.label_search1.Click += new System.EventHandler(this.label_search1_Click);
             // 
             // button_revise1
             // 
@@ -106,7 +104,6 @@
             this.button_dele1.TabIndex = 5;
             this.button_dele1.Text = "删除记录";
             this.button_dele1.UseVisualStyleBackColor = true;
-            this.button_dele1.Click += new System.EventHandler(this.button_dele1_Click);
             // 
             // button_add1
             // 
@@ -215,7 +212,6 @@
             this.label2.Size = new System.Drawing.Size(84, 20);
             this.label2.TabIndex = 17;
             this.label2.Text = "记录类型：";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // checkBox_Return
             // 
@@ -261,7 +257,6 @@
             this.label1.Size = new System.Drawing.Size(84, 20);
             this.label1.TabIndex = 13;
             this.label1.Text = "借阅人信息";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button_ResetQuery
             // 
