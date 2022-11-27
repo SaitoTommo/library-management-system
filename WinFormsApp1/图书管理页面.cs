@@ -15,6 +15,8 @@ namespace WinFormsApp1
     public partial class winform_BookManage : Form
     {
         IQueryable<BookListQueryRecord> Query;
+        IQueryable<BookListQueryRecord> SearchQuery;
+
         public winform_BookManage()
         {
             InitializeComponent();
@@ -29,23 +31,30 @@ namespace WinFormsApp1
         private void ShowBookList()
         {
             //Query.Load();
-            Query = from book in LibraryDbContext.Shared.Books
-                        join acc in LibraryDbContext.Shared.Accounts
-                        on book.OwnerID equals acc.AId into BA_Join
-                    from item in BA_Join.DefaultIfEmpty()
-                        join house in LibraryDbContext.Shared.BookWareHouses
-                        on book.Position equals house.Id into BAH_Join
-                    from x in BAH_Join.DefaultIfEmpty()
-                        join cate in LibraryDbContext.Shared.Categories
-                        on book.CategoryID equals cate.Id into BAHC_Join
-                    from record in BAHC_Join.DefaultIfEmpty()
-                    select new BookListQueryRecord
-                    {
-                        book = book,
-                        ReaderAccount = item,
-                        wareHouse = x,
-                        CategoryEntity= record,
-                    };
+            Query = from b in LibraryDbContext.Shared.Books
+                    join a in LibraryDbContext.Shared.Accounts on b.OwnerID equals a.AId into ba_join
+                    from baj in ba_join.DefaultIfEmpty()
+                    join h in LibraryDbContext.Shared.BookWareHouses on b.Position equals h.Id 
+                    join bi in LibraryDbContext.Shared.BookInfo on b.ISBN equals bi.ISBN
+                    join c in LibraryDbContext.Shared.Categories on bi.CategoryID equals c.Id
+                    select new BookListQueryRecord { book = b, CategoryEntity = c, ReaderAccount = baj, bookInfo = bi, wareHouse = h };
+                //from book in LibraryDbContext.Shared.Books
+                //        join acc in LibraryDbContext.Shared.Accounts
+                //        on book.OwnerID equals acc.AId into BA_Join
+                //    from item in BA_Join.DefaultIfEmpty()
+                //        join house in LibraryDbContext.Shared.BookWareHouses
+                //        on book.Position equals house.Id into BAH_Join
+                //    from x in BAH_Join.DefaultIfEmpty()
+                //        join cate in LibraryDbContext.Shared.Categories
+                //        on book.CategoryID equals cate.Id into BAHC_Join
+                //    from record in BAHC_Join.DefaultIfEmpty()
+                //    select new BookListQueryRecord
+                //    {
+                //        book = book,
+                //        ReaderAccount = item,
+                //        wareHouse = x,
+                //        CategoryEntity= record,
+                //    };
             //Query.Load();//加载到本地
             form_book.DataSource = Query.ToList();
         }
@@ -92,7 +101,7 @@ namespace WinFormsApp1
 
         private void ShowBookListByISBN(string ISBN)
         {
-            Query = from book in LibraryDbContext.Shared.Books.Where(e=>e.ISBN.Contains(ISBN))
+            SearchQuery = from book in LibraryDbContext.Shared.Books.Where(e=>e.ISBN.Contains(ISBN))
                     join acc in LibraryDbContext.Shared.Accounts
                     on book.OwnerID equals acc.AId into BA_Join
                     from item in BA_Join.DefaultIfEmpty()
@@ -141,7 +150,7 @@ namespace WinFormsApp1
             public Book book { get; set; }
             public Account ReaderAccount { get; set; }
             public BookWareHouse wareHouse { get; set; }
-
+            public BookInfo bookInfo { get; set; }
             public BookCategory CategoryEntity { get; set; }
             public string BookID => book.BookID;
             public string ISBN => book.ISBN;

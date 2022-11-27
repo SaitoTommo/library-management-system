@@ -50,20 +50,35 @@ namespace WinFormsApp1
 
         [NotMapped]
         private BookInfo info => LibraryDbContext.Shared.BookInfo.Single(e => e.ISBN == this.ISBN);
+        /// <summary>
+        /// 不再使用这个属性，如果需要请通过连接bookinfo表获取
+        /// </summary>
         [NotMapped]
         public string Name =>info.Name;
+        /// <summary>
+        /// 不再使用这个属性，如果需要请通过连接bookinfo表获取
+        /// </summary>
         [NotMapped]
         public string Author => info.Name;
+        /// <summary>
+        /// 不再使用这个属性，如果需要请通过连接bookinfo表获取
+        /// </summary>
         [NotMapped]
         public string? Description => info.Name;
         [NotMapped]
         /// <summary>
         /// 出版社
+        ///         
+        /// 不再使用这个属性，如果需要请通过连接bookinfo表获取
+        /// 
         /// </summary>
         public string Publisher => info.Name;
         [NotMapped]
         /// <summary>
         /// 《中国图书馆分类法》分类
+        /// 
+        /// 不再使用这个属性，如果需要请通过连接bookinfo表获取
+        /// 
         /// </summary>
         public int CategoryID => info.CategoryID;
         #endregion
