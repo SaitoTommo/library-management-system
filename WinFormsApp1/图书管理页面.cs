@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyModel;
 
 using System;
 using System.Collections.Generic;
@@ -34,60 +35,49 @@ namespace WinFormsApp1
             Query = from b in LibraryDbContext.Shared.Books
                     join a in LibraryDbContext.Shared.Accounts on b.OwnerID equals a.AId into ba_join
                     from baj in ba_join.DefaultIfEmpty()
-                    join h in LibraryDbContext.Shared.BookWareHouses on b.Position equals h.Id 
-                    join bi in LibraryDbContext.Shared.BookInfo on b.ISBN equals bi.ISBN
+                    join h in LibraryDbContext.Shared.BookWareHouses on b.Position equals h.Id
+                    join bi in LibraryDbContext.Shared.BookInfo on b.BookInfoId equals bi.Id
                     join c in LibraryDbContext.Shared.Categories on bi.CategoryID equals c.Id
                     select new BookListQueryRecord { book = b, CategoryEntity = c, ReaderAccount = baj, bookInfo = bi, wareHouse = h };
-                //from book in LibraryDbContext.Shared.Books
-                //        join acc in LibraryDbContext.Shared.Accounts
-                //        on book.OwnerID equals acc.AId into BA_Join
-                //    from item in BA_Join.DefaultIfEmpty()
-                //        join house in LibraryDbContext.Shared.BookWareHouses
-                //        on book.Position equals house.Id into BAH_Join
-                //    from x in BAH_Join.DefaultIfEmpty()
-                //        join cate in LibraryDbContext.Shared.Categories
-                //        on book.CategoryID equals cate.Id into BAHC_Join
-                //    from record in BAHC_Join.DefaultIfEmpty()
-                //    select new BookListQueryRecord
-                //    {
-                //        book = book,
-                //        ReaderAccount = item,
-                //        wareHouse = x,
-                //        CategoryEntity= record,
-                //    };
+            //from book in LibraryDbContext.Shared.Books
+            //        join acc in LibraryDbContext.Shared.Accounts
+            //        on book.OwnerID equals acc.AId into BA_Join
+            //    from item in BA_Join.DefaultIfEmpty()
+            //        join house in LibraryDbContext.Shared.BookWareHouses
+            //        on book.Position equals house.Id into BAH_Join
+            //    from x in BAH_Join.DefaultIfEmpty()
+            //        join cate in LibraryDbContext.Shared.Categories
+            //        on book.CategoryID equals cate.Id into BAHC_Join
+            //    from record in BAHC_Join.DefaultIfEmpty()
+            //    select new BookListQueryRecord
+            //    {
+            //        book = book,
+            //        ReaderAccount = item,
+            //        wareHouse = x,
+            //        CategoryEntity= record,
+            //    };
             //Query.Load();//加载到本地
             form_book.DataSource = Query.ToList();
         }
 
-        private void Textbox_ISBN_TextChanged(object sender, EventArgs e)
+        private void Textbox_Bookname_TextChanged(object sender, EventArgs e)
         {
-            if ((sender as TextBox).Text == string.Empty) 
+            if ((sender as TextBox).Text == string.Empty)
             {
                 ShowBookList();
                 return;
             }
 
-            //Textbox_Bookname.Text = string.Empty;
-            ShowBookListByISBN((sender as TextBox).Text);
-        }
-        private void Textbox_Bookname_TextChanged(object sender, EventArgs e)
-        {
-            if ((sender as TextBox).Text == string.Empty) 
-            {
-                ShowBookList();
-                return; 
-            }
-
             //(sender as TextBox).Text= string.Empty;
-            ShowBookListByName((sender as TextBox).Text);
+            SearchBookList((sender as TextBox).Text);
         }
 
         private void button_dele_Click(object sender, EventArgs e)
         {
             List<Book> books = new List<Book>();
-            if (MessageBox.Show($"你确定要删除{form_book.SelectedRows.Count}本书目吗", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+            if (MessageBox.Show($"你确定要删除{form_book.SelectedRows.Count}本书目吗", "警告", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                foreach (DataGridViewRow row in form_book.SelectedRows) 
+                foreach (DataGridViewRow row in form_book.SelectedRows)
                 {
                     if (row.DataBoundItem == null) continue;
                     books.Add((row.DataBoundItem as BookListQueryRecord).book);
@@ -99,50 +89,33 @@ namespace WinFormsApp1
             //LibraryDbContext.Shared.Books.RemoveRange(form_book.SelectedCells.);
         }
 
-        private void ShowBookListByISBN(string ISBN)
+
+
+        private void SearchBookList(string name)
         {
-            SearchQuery = from book in LibraryDbContext.Shared.Books.Where(e=>e.ISBN.Contains(ISBN))
-                    join acc in LibraryDbContext.Shared.Accounts
-                    on book.OwnerID equals acc.AId into BA_Join
-                    from item in BA_Join.DefaultIfEmpty()
-                    join house in LibraryDbContext.Shared.BookWareHouses
-                    on book.Position equals house.Id into BAH_Join
-                    from x in BAH_Join.DefaultIfEmpty()
-                    join cate in LibraryDbContext.Shared.Categories
-                    on book.CategoryID equals cate.Id into BAHC_Join
-                    from record in BAHC_Join.DefaultIfEmpty()
-                    select new BookListQueryRecord
-                    {
-                        book = book,
-                        ReaderAccount = item,
-                        wareHouse = x,
-                        CategoryEntity= record,
-                    };
-            //Query.Load();//加载到本地
-            form_book.DataSource = Query.ToList();
+            var q = from r in Query.ToList()
+                    where r.Name.ToLower().Contains(name.ToLower()) || r.ISBN.ToLower().Contains(name.ToLower()) 
+                    || r.Author.ToLower().Contains(name.ToLower()) || r.Publisher.StartsWith(name.ToLower())
+                    || r.OwnerID.ToLower().Contains(name.ToLower())
+                    select r;
+            form_book.DataSource = q.ToList();
         }
 
-        private void ShowBookListByName(string name)
+        private void button_add_Click(object sender, EventArgs e)
         {
-            Query = from book in LibraryDbContext.Shared.Books.Where(e => e.Name.ToLower().Contains(name.ToLower()))
-                    join acc in LibraryDbContext.Shared.Accounts
-                    on book.OwnerID equals acc.AId into BA_Join
-                    from item in BA_Join.DefaultIfEmpty()
-                    join house in LibraryDbContext.Shared.BookWareHouses
-                    on book.Position equals house.Id into BAH_Join
-                    from x in BAH_Join.DefaultIfEmpty()
-                    join cate in LibraryDbContext.Shared.Categories
-                    on book.CategoryID equals cate.Id into BAHC_Join
-                    from record in BAHC_Join.DefaultIfEmpty()
-                    select new BookListQueryRecord
-                    {
-                        book = book,
-                        ReaderAccount = item,
-                        wareHouse = x,
-                        CategoryEntity= record,
-                    };
-            //Query.Load();//加载到本地
-            form_book.DataSource = Query.ToList();
+            new Dialog_BookModify().ShowDialog(this);
+            ShowBookList();
+        }
+
+        private void button_revise_Click(object sender, EventArgs e)
+        {
+            var a = new BookListQueryRecord();
+            foreach (DataGridViewRow row in form_book.SelectedRows)
+            {
+                a = row.DataBoundItem as BookListQueryRecord;
+                new Dialog_BookModify(a.book, a.bookInfo, a.CategoryEntity, a.wareHouse).ShowDialog(this);
+            }
+            ShowBookList();
         }
 
         private record BookListQueryRecord
@@ -153,11 +126,11 @@ namespace WinFormsApp1
             public BookInfo bookInfo { get; set; }
             public BookCategory CategoryEntity { get; set; }
             public string BookID => book.BookID;
-            public string ISBN => book.ISBN;
-            public string Name => book.Name;
-            public string Description => book.Description;
-            public string Author => book.Author;
-            public string Publisher => book.Publisher;
+            public string ISBN => bookInfo.ISBN;
+            public string Name => bookInfo.Name;
+            public string Description => bookInfo.Description;
+            public string Author => bookInfo.Author;
+            public string Publisher => bookInfo.Publisher;
             public string OwnerID => ReaderAccount==null ? "无" : $"{ReaderAccount.ID} | {ReaderAccount.Name}";
 
             public string BookCategory => CategoryEntity.Name;

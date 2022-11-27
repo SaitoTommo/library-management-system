@@ -18,6 +18,11 @@ namespace WinFormsApp1
         public string CategoryID { get; set; }
         public string Name { get; set; }
 
+        public override string ToString()
+        {
+            return $"{CategoryID} | {Name}";
+        }
+
         public virtual ObservableCollectionListSource<Book> Books { get; } = new();
     }
 }

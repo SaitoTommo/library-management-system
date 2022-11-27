@@ -56,7 +56,7 @@ namespace WinFormsApp1
              */
 
             Query = from b in LibraryDbContext.Shared.Books.Where(e => e.OwnerID == Global.account.AId)
-                    join bi in LibraryDbContext.Shared.BookInfo on b.ISBN equals bi.ISBN
+                    join bi in LibraryDbContext.Shared.BookInfo on b.BookInfoId equals bi.Id
                     join l in LibraryDbContext.Shared.BorrowLogs on new { i = b.Id, AI = Global.account.AId, t = BookActionType.Borrow } equals new { i = l.BookId, AI = l.BorrowerID, t = l.ActionType }
                     orderby l.BorrowTime descending
                     group new { bn = bi.Name, li = l.ID, t = l.BorrowTime } by b into g

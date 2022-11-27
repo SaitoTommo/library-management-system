@@ -142,12 +142,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 51);
+            this.label1.Location = new System.Drawing.Point(23, 64);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 21);
+            this.label1.Size = new System.Drawing.Size(138, 21);
             this.label1.TabIndex = 3;
-            this.label1.Text = "请输入您要查询的书名：";
+            this.label1.Text = "请输入查询关键词";
             // 
             // textbox_bookqueryword
             // 

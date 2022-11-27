@@ -146,7 +146,7 @@ namespace WinFormsApp1
         private void QueryBook(string BookQueryKeyword)
         {
             books = (from b in LibraryDbContext.Shared.Books join
-                     bi in LibraryDbContext.Shared.BookInfo on b.ISBN equals bi.ISBN
+                     bi in LibraryDbContext.Shared.BookInfo on b.BookInfoId equals bi.Id
                      where (bi.Name.ToLower().Contains(BookQueryKeyword.ToLower())
                      || bi.ISBN.Contains(BookQueryKeyword)
                      || bi.Author.ToLower().Contains(BookQueryKeyword.ToLower()))

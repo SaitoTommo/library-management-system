@@ -46,7 +46,7 @@ namespace WinFormsApp1
                             this.Hide();
                             break;
                         default:
-                            throw new InvalidOperationException("账户角色错误");
+                            throw new Exception("账户角色错误");
                     }
 
                     _temp = null;
@@ -59,12 +59,16 @@ namespace WinFormsApp1
             catch (InvalidOperationException ex)
             {
                 //throw ex;
-                MessageBox.Show($"错误\n{ex.Message}");
+                MessageBox.Show("账号或密码错误");
                 //MessageBox.Show(ex.Message+"\n"+ex.GetType().ToString());
             }
             catch (ArgumentNullException ex)
             {
                 MessageBox.Show($"未知错误\n{ex.GetType()}\n{ex.Message}");
+            }
+            catch (Exception ee) 
+            {
+                MessageBox.Show(ee.Message);
             }
         }
 

@@ -42,9 +42,10 @@ namespace WinFormsApp1
     //                  别人笑我忒疯癫，我笑自己命太贱；
     //                  不见满街漂亮妹，哪个归得程序员？
 
-    [PrimaryKey("ISBN")]
+    [PrimaryKey("Id")]
     public class BookInfo
     {
+        public int Id { get; set; }
         [Required]
         public string ISBN { get; set; }
         //public int ISBN { get; set; }

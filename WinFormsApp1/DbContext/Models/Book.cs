@@ -18,10 +18,10 @@ namespace WinFormsApp1
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey("ISBN")]
+        [ForeignKey("BookInfoId")]
         public BookInfo bookInfo { get; set; }
         [Required]
-        public string ISBN{ get; set; }
+        public int BookInfoId{ get; set; }
 
         /// <summary>
         /// 索书号
@@ -49,7 +49,7 @@ namespace WinFormsApp1
          */
 
         [NotMapped]
-        private BookInfo info => LibraryDbContext.Shared.BookInfo.Single(e => e.ISBN == this.ISBN);
+        private BookInfo info => LibraryDbContext.Shared.BookInfo.Single(e => e.Id == this.BookInfoId);
         /// <summary>
         /// 不再使用这个属性，如果需要请通过连接bookinfo表获取
         /// </summary>

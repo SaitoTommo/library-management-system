@@ -52,7 +52,6 @@
             this.welcome.Size = new System.Drawing.Size(303, 33);
             this.welcome.TabIndex = 0;
             this.welcome.Text = "欢迎登录图书馆系统";
-            //this.welcome.Click += new System.EventHandler(this.label1_Click);
             // 
             // account
             // 
@@ -63,8 +62,7 @@
             this.account.Name = "account";
             this.account.Size = new System.Drawing.Size(55, 25);
             this.account.TabIndex = 1;
-            this.account.Text = "学号:";
-            //this.account.Click += new System.EventHandler(this.account_Click);
+            this.account.Text = "账号:";
             // 
             // password
             // 
@@ -76,7 +74,6 @@
             this.password.Size = new System.Drawing.Size(55, 25);
             this.password.TabIndex = 1;
             this.password.Text = "密码:";
-            //this.password.Click += new System.EventHandler(this.label3_Click);
             // 
             // textBox1
             // 
@@ -104,7 +101,7 @@
             this.button_log.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button_log.Name = "button_log";
             this.button_log.Size = new System.Drawing.Size(95, 35);
-            this.button_log.TabIndex = 3;
+            this.button_log.TabIndex = 5;
             this.button_log.Text = "登录";
             this.button_log.UseVisualStyleBackColor = true;
             this.button_log.Click += new System.EventHandler(this.button1_Click);
@@ -117,11 +114,10 @@
             this.radioButton_admin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.radioButton_admin.Name = "radioButton_admin";
             this.radioButton_admin.Size = new System.Drawing.Size(72, 24);
-            this.radioButton_admin.TabIndex = 5;
+            this.radioButton_admin.TabIndex = 3;
             this.radioButton_admin.Text = "管理员";
             this.radioButton_admin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton_admin.UseVisualStyleBackColor = true;
-            //this.radioButton_admin.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // button_cancel
             // 
@@ -130,7 +126,7 @@
             this.button_cancel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(95, 35);
-            this.button_cancel.TabIndex = 3;
+            this.button_cancel.TabIndex = 6;
             this.button_cancel.Text = "取消";
             this.button_cancel.UseVisualStyleBackColor = true;
             this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
@@ -144,12 +140,11 @@
             this.radioButton_stu.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.radioButton_stu.Name = "radioButton_stu";
             this.radioButton_stu.Size = new System.Drawing.Size(57, 24);
-            this.radioButton_stu.TabIndex = 5;
+            this.radioButton_stu.TabIndex = 4;
             this.radioButton_stu.TabStop = true;
             this.radioButton_stu.Text = "学生";
             this.radioButton_stu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton_stu.UseVisualStyleBackColor = true;
-            //this.radioButton_stu.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // winform_log
             // 

@@ -20,13 +20,14 @@ namespace WinFormsApp1
             //RefreshQuery();
         }
 
-        public void SearchQuery()
+        public void SearchQuery(string keyword)
         {
             Query = from b in LibraryDbContext.Shared.Books
-                    join bi in LibraryDbContext.Shared.BookInfo on b.ISBN equals bi.ISBN
+                    join bi in LibraryDbContext.Shared.BookInfo on b.BookInfoId equals bi.Id
                     join c in LibraryDbContext.Shared.Categories on bi.CategoryID equals c.Id
                     join h in LibraryDbContext.Shared.BookWareHouses on b.Position equals h.Id
-                    where bi.Name.ToLower().Contains(textbox_bookqueryword.Text.ToLower())
+                    where bi.Name.ToLower().Contains(keyword) || bi.Author.ToLower().Contains(keyword) 
+                    || bi.ISBN.Contains(keyword) || bi.Publisher.ToLower().Contains(keyword)
                     select new BookQueryRecord { book = b, wareHouse = h, bookInfo = bi, bookCategory = c };
 
             form_books.DataSource = Query.ToList();
@@ -37,7 +38,7 @@ namespace WinFormsApp1
             if (textbox_bookqueryword.Text == string.Empty)
                 ShowAllBooks();
             else
-                SearchQuery();
+                SearchQuery(textbox_bookqueryword.Text.ToLower());
         }
 
         private void button_borrow_Click(object sender, EventArgs e)
@@ -76,7 +77,7 @@ namespace WinFormsApp1
         private void ShowAllBooks() 
         {
             var q = from b in LibraryDbContext.Shared.Books
-                    join bi in LibraryDbContext.Shared.BookInfo on b.ISBN equals bi.ISBN
+                    join bi in LibraryDbContext.Shared.BookInfo on b.BookInfoId equals bi.Id
                     join c in LibraryDbContext.Shared.Categories on bi.CategoryID equals c.Id
                     join h in LibraryDbContext.Shared.BookWareHouses on b.Position equals h.Id
                     select new BookQueryRecord { book = b, wareHouse = h, bookInfo = bi, bookCategory = c };

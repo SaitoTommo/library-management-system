@@ -76,6 +76,7 @@ namespace WinFormsApp1
             );
             modelBuilder.Entity<BookInfo>().HasData(
                 new BookInfo { 
+                    Id = 1,
                     ISBN = "978-7-01-018150-9", 
                     Name = "列宁全集. 第十四卷. 第2版", 
                     Description = null, 
@@ -84,6 +85,7 @@ namespace WinFormsApp1
                     Publisher = "北京:人民出版社,2013-2017" 
                 },
                 new BookInfo { 
+                    Id = 2,
                     ISBN = "978-7-5117-3201-9", 
                     Name = "共产党宣言", 
                     Description = "《共产党宣言》是马克思和恩格斯为世界上第一个共产党组织——共产主义者同盟撰写的纲领。《共产党宣言》是科学社会主义的最伟大的纲领性文献，它的问世标志着马克思主义的诞生。" ,
@@ -92,6 +94,7 @@ namespace WinFormsApp1
                     Publisher = "北京:中央编译出版社,[2017.04]"
                 },//怎么还会有地方在用10位的旧格式的ISBN的 = =
                 new BookInfo { 
+                    Id = 3,
                     ISBN = "7-01-000386-6" ,
                     Name = "列宁全集. 第五十八卷, 《马克思和恩格斯通信集(1844～1883年)》提要 : 1913年10～12月. 第2版",
                     Description = null,
@@ -101,15 +104,15 @@ namespace WinFormsApp1
                 }
             );
             modelBuilder.Entity<Book>().HasData(
-                new Book { Id = 1, ISBN = "7-01-000386-6", BookID = "A2/1", Position = 1 },
-                new Book { Id = 2, ISBN = "7-01-000386-6", BookID = "A2/2", Position = 1 },
-                new Book { Id = 3, ISBN = "7-01-000386-6", BookID = "A2/3", Position = 1 },
-                new Book { Id = 4, ISBN = "978-7-01-018150-9", BookID = "A2/4", Position = 2 },
-                new Book { Id = 5, ISBN = "978-7-01-018150-9", BookID = "A2/5", Position = 2 },
-                new Book { Id = 6, ISBN = "978-7-01-018150-9", BookID = "A2/6", Position = 2 },
-                new Book { Id = 7, ISBN = "978-7-5117-3201-9", BookID = "A1/1", Position = 2 },
-                new Book { Id = 8, ISBN = "978-7-5117-3201-9", BookID = "A1/2", Position = 2 },
-                new Book { Id = 9, ISBN = "978-7-5117-3201-9", BookID = "A1/3", Position = 2 }
+                new Book { Id = 1, BookInfoId = 3, BookID = "A2/1", Position = 1 },
+                new Book { Id = 2, BookInfoId = 3, BookID = "A2/2", Position = 1 },
+                new Book { Id = 3, BookInfoId = 3, BookID = "A2/3", Position = 1 },
+                new Book { Id = 4, BookInfoId = 1, BookID = "A2/4", Position = 2 },
+                new Book { Id = 5, BookInfoId = 1, BookID = "A2/5", Position = 2 },
+                new Book { Id = 6, BookInfoId = 1, BookID = "A2/6", Position = 2 },
+                new Book { Id = 7, BookInfoId = 2, BookID = "A1/1", Position = 2 },
+                new Book { Id = 8, BookInfoId = 2, BookID = "A1/2", Position = 2 },
+                new Book { Id = 9, BookInfoId = 2, BookID = "A1/3", Position = 2 }
             );
 
             modelBuilder.Entity<Account>().HasData(

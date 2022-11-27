@@ -32,7 +32,7 @@ namespace WinFormsApp1
             BorrowLogs = from BLog in LibraryDbContext.Shared.BorrowLogs
                          join book in LibraryDbContext.Shared.Books on BLog.BookId equals book.Id
                          join acc in LibraryDbContext.Shared.Accounts on BLog.BorrowerID equals acc.AId
-                         join bi in LibraryDbContext.Shared.BookInfo on book.ISBN equals bi.ISBN
+                         join bi in LibraryDbContext.Shared.BookInfo on book.BookInfoId equals bi.Id
                          select new BorrowLogQueryRecord { log = BLog, book = book, AssosiatedAccount = acc, bookInfo = bi };
             //form_record.DataSource = BorrowLogs;
             form_record.DataSource = BorrowLogs.ToList();
