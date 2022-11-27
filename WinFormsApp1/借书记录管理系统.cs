@@ -32,7 +32,8 @@ namespace WinFormsApp1
             BorrowLogs = from BLog in LibraryDbContext.Shared.BorrowLogs
                          join book in LibraryDbContext.Shared.Books on BLog.BookId equals book.Id
                          join acc in LibraryDbContext.Shared.Accounts on BLog.BorrowerID equals acc.AId
-                         select new BorrowLogQueryRecord { log = BLog, book = book, AssosiatedAccount = acc };
+                         join bi in LibraryDbContext.Shared.BookInfo on book.ISBN equals bi.ISBN
+                         select new BorrowLogQueryRecord { log = BLog, book = book, AssosiatedAccount = acc, bookInfo = bi };
             //form_record.DataSource = BorrowLogs;
             form_record.DataSource = BorrowLogs.ToList();
         }
@@ -44,13 +45,12 @@ namespace WinFormsApp1
                 (
                     from log in BorrowLogs.ToList()
                     where
-                    (Textbox_Querybyname.Text == string.Empty || log.BookName.ToLower().Contains(Textbox_Querybyname.Text.ToLower())) &&
-                    (!dateTimePicker1.Checked || log.BorrowTime.Date == dateTimePicker1.Value.Date) &&
-                    (textBox_QueryByReader.Text == string.Empty || log.AssosiatedAccount.Name.ToLower().Contains(textBox_QueryByReader.Text.ToLower()) || log.AssosiatedAccount.ID.ToLower().Contains(textBox_QueryByReader.Text.ToLower())) &&
-                    //(!checkBox_Borrow.Checked || log.log.ActionType == BookActionType.Borrow) || (!checkBox_Return.Checked || log.log.ActionType == BookActionType.Return)
-                    ((!checkBox_Borrow.Checked&&!checkBox_Return.Checked)||(checkBox_Borrow.Checked&&checkBox_Return.Checked))||
-                    ((!checkBox_Borrow.Checked || log.log.ActionType == BookActionType.Borrow)
-                    && (!checkBox_Return.Checked || log.log.ActionType == BookActionType.Return))
+                    (Textbox_Querybyname.Text == string.Empty || log.BookName.ToLower().Contains(Textbox_Querybyname.Text.ToLower())) 
+                    && (!dateTimePicker1.Checked || log.BorrowTime.Date == dateTimePicker1.Value.Date)
+                    && (textBox_QueryByReader.Text == string.Empty || log.AssosiatedAccount.Name.ToLower().Contains(textBox_QueryByReader.Text.ToLower()) || log.AssosiatedAccount.ID.ToLower().Contains(textBox_QueryByReader.Text.ToLower()))
+                    && (((!checkBox_Borrow.Checked&&!checkBox_Return.Checked)||(checkBox_Borrow.Checked&&checkBox_Return.Checked))
+                    || ((!checkBox_Borrow.Checked || log.log.ActionType == BookActionType.Borrow)
+                    && (!checkBox_Return.Checked || log.log.ActionType == BookActionType.Return)))
                     select log
                 ).AsQueryable();
 
@@ -134,11 +134,12 @@ namespace WinFormsApp1
             public BorrowLog log { get; set; }
             public Account AssosiatedAccount { get; set; }
             public Book book { get; set; }
+            public BookInfo bookInfo { get; set; }
 
             public DateTime BorrowTime => log.BorrowTime;
             public string Reader => $"{AssosiatedAccount.ID} | {AssosiatedAccount.Name}";
             public string ActionType => log.ActionType == BookActionType.Borrow ? "借出" : "归还";
-            public string BookName => book.Name;
+            public string BookName => bookInfo.Name;
             public string BookID => book.BookID;
         }
     }

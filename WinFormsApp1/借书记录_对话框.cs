@@ -145,12 +145,13 @@ namespace WinFormsApp1
 
         private void QueryBook(string BookQueryKeyword)
         {
-            books = (from b in LibraryDbContext.Shared.Books
-                     where (b.Name.ToLower().Contains(BookQueryKeyword.ToLower())
-                     || b.ISBN.Contains(BookQueryKeyword)
-                     || b.Author.ToLower().Contains(BookQueryKeyword.ToLower()))
+            books = (from b in LibraryDbContext.Shared.Books join
+                     bi in LibraryDbContext.Shared.BookInfo on b.ISBN equals bi.ISBN
+                     where (bi.Name.ToLower().Contains(BookQueryKeyword.ToLower())
+                     || bi.ISBN.Contains(BookQueryKeyword)
+                     || bi.Author.ToLower().Contains(BookQueryKeyword.ToLower()))
                      || b.BookID.ToLower().Contains(BookQueryKeyword.ToLower())
-                     select new bookQueryRecord { book = b }).ToList(); ;
+                     select new bookQueryRecord { book = b, bookInfo = bi }).ToList(); ;
             //dataGridView_BookInfo.AutoGenerateColumns = false;
             //dataGridView_BookInfo.DataSource = books.ToList();
         }
@@ -181,16 +182,16 @@ namespace WinFormsApp1
                     if (log.ActionType == BookActionType.Borrow) //查找未来的归还记录
                     {
                         var q = from l in LibraryDbContext.Shared.BorrowLogs // 查找过去此书是否已被归还
-                                where l.ID< log.ID
+                                where l.BorrowTime < log.BorrowTime && l.BookId == log.BookId
                                 orderby l.ID descending
                                 select l;
-                        if (q.First().ActionType == BookActionType.Borrow) //如果过去书没被归还
+                        if (q.Count()>0 && q.First().ActionType == BookActionType.Borrow) //如果过去书没被归还
                         {
                             throw new Exception("你的行为会导致记录混乱");//= =
                         }
 
                         q = from l in LibraryDbContext.Shared.BorrowLogs
-                            where l.ID > log.ID && l.ActionType != log.ActionType && l.BorrowerID == account.AId && l.BookId == book.Id
+                            where l.BorrowTime > log.BorrowTime && l.ActionType != log.ActionType && l.BorrowerID == account.AId && l.BookId == book.Id
                             orderby l.ID
                             select l;
 
@@ -207,7 +208,7 @@ namespace WinFormsApp1
                     else
                     {
                         var q = from l in LibraryDbContext.Shared.BorrowLogs
-                                where l.ID < log.ID && l.ActionType != log.ActionType && l.BorrowerID == account.AId && l.BookId == book.Id
+                                where l.BorrowTime < log.BorrowTime && l.ActionType != log.ActionType && l.BorrowerID == account.AId && l.BookId == book_New.Id
                                 orderby l.ID descending
                                 select l;// 查找过去的借出记录
 
@@ -230,9 +231,6 @@ namespace WinFormsApp1
                             //}
                         }
                     }
-
-
-
                 }
                 else //如果行为是增加
                 {
@@ -251,7 +249,7 @@ namespace WinFormsApp1
 
                     if (type == BookActionType.Borrow)
                     {
-                        var q = LibraryDbContext.Shared.BorrowLogs.Where(l => l.BorrowTime < time).First();
+                        var q = LibraryDbContext.Shared.BorrowLogs.Where(l => l.BorrowTime < time).OrderByDescending(l=>l.BorrowTime).First();
                         if (q.ActionType == BookActionType.Borrow)
                             throw (new Exception("你的行为会导致记录混乱"));
                         //where l.BorrowTime < time
@@ -296,6 +294,10 @@ namespace WinFormsApp1
                         this.Close();
                         return;
                     }
+                    else 
+                    {
+                        MessageBox.Show($"{ee.Message}\n{ee.GetType()}");
+                    }
                 }
             }
             LibraryDbContext.Shared.SaveChanges();
@@ -310,9 +312,10 @@ namespace WinFormsApp1
         private record bookQueryRecord
         {
             public Book book { get; set; }
+            public BookInfo bookInfo { get; set; }
             //Name = b.Name, ISBN = b.ISBN, BookID = b.BookID, CanBeBorrowed = (b.OwnerID == null)
-            public string Name => book.Name;
-            public string ISBN => book.ISBN;
+            public string Name => bookInfo.Name;
+            public string ISBN => bookInfo.ISBN;
             public string BookID => book.BookID;
             public bool CanBeBorrowed => (book.OwnerID == null);
         }
