@@ -217,19 +217,19 @@
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
             this.panel1.Controls.Add(this.button_Cancel);
             this.panel1.Controls.Add(this.button_SaveChange);
-            this.panel1.Location = new System.Drawing.Point(5, 415);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5);
+            this.panel1.Location = new System.Drawing.Point(0, 410);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(790, 30);
+            this.panel1.Size = new System.Drawing.Size(800, 40);
             this.panel1.TabIndex = 3;
             // 
             // button_Cancel
             // 
             this.button_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Cancel.Location = new System.Drawing.Point(631, 4);
+            this.button_Cancel.Location = new System.Drawing.Point(641, 4);
             this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.button_Cancel.Size = new System.Drawing.Size(75, 33);
             this.button_Cancel.TabIndex = 1;
             this.button_Cancel.Text = "取消";
             this.button_Cancel.UseVisualStyleBackColor = true;
@@ -239,9 +239,9 @@
             // 
             this.button_SaveChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_SaveChange.Location = new System.Drawing.Point(712, 4);
+            this.button_SaveChange.Location = new System.Drawing.Point(722, 4);
             this.button_SaveChange.Name = "button_SaveChange";
-            this.button_SaveChange.Size = new System.Drawing.Size(75, 23);
+            this.button_SaveChange.Size = new System.Drawing.Size(75, 33);
             this.button_SaveChange.TabIndex = 0;
             this.button_SaveChange.Text = "确定";
             this.button_SaveChange.UseVisualStyleBackColor = true;

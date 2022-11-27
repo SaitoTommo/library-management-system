@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 using System;
 using System.Collections.Generic;
@@ -21,12 +22,14 @@ namespace WinFormsApp1
         private record ReturnBookQueryRecord
         {
             public Book book { get; set; }
+
+           // public BookInfo bookInfo { get; set; }
             //public BorrowLog log { get; set; }
             public DateTime BorrowTime { get; set; }// => log.BorrowTime;
 
             public int LogId { get; set; }
 
-            public string BookName => book.Name;
+            public string BookName { get; set; }
             public int BookID => book.Id;
         }
 
@@ -52,15 +55,27 @@ namespace WinFormsApp1
              * group by l.bookid
              */
 
-            Query = from book in LibraryDbContext.Shared.Books
-                    join log in LibraryDbContext.Shared.BorrowLogs
-                    on new { id = book.OwnerID, bid = book.Id, type = BookActionType.Borrow }
-                    equals new { id = (int?)Global.account.AId, bid = log.BookId, type = log.ActionType }
-                    group new { log.ID, log.BorrowTime } by book into g
-                    select new ReturnBookQueryRecord { book = g.Key, BorrowTime = g.Max(e => e.BorrowTime), LogId = g.Max(e => e.ID) };
+            Query = from b in LibraryDbContext.Shared.Books.Where(e => e.OwnerID == Global.account.AId)
+                    join bi in LibraryDbContext.Shared.BookInfo on b.ISBN equals bi.ISBN
+                    join l in LibraryDbContext.Shared.BorrowLogs on new { i = b.Id, AI = Global.account.AId, t = BookActionType.Borrow } equals new { i = l.BookId, AI = l.BorrowerID, t = l.ActionType }
+                    orderby l.BorrowTime descending
+                    group new { bn = bi.Name, li = l.ID, t = l.BorrowTime } by b into g
+                    select new ReturnBookQueryRecord { 
+                        book = g.Key, 
+                        BorrowTime = g.FirstOrDefault().t, 
+                        LogId = g.FirstOrDefault().li,//Single(e => e.t == g.Max(f => f.t)).li, 
+                        BookName = g.FirstOrDefault().bn//Single(e => e.t == g.Max(f => f.t)).bn 
+                    };
+            //from book in LibraryDbContext.Shared.Books
+            //    join log in LibraryDbContext.Shared.BorrowLogs
+            //    on new { id = book.OwnerID, bid = book.Id, type = BookActionType.Borrow }
+            //    equals new { id = (int?)Global.account.AId, bid = log.BookId, type = log.ActionType }
+            //    join bi in LibraryDbContext.Shared.BookInfo on book.ISBN equals bi.ISBN
+            //    group new { id = log.ID, time = log.BorrowTime,name = bi.Name } by book into g
+            //    select new ReturnBookQueryRecord {BookName = g.Key , book = g.Key, BorrowTime = g.Max(e => e.BorrowTime), LogId = g.Max(e => e.ID) };
 
             //if (Query.ToList().Count()<=0) return;
-
+            //.Load();
             form_record.AutoGenerateColumns= false;
             form_record.DataSource = Query.ToList();
         }

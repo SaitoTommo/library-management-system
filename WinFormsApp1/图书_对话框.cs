@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class winform_add0 : Form
+    public partial class Dialog_BookModify : Form
     {
-        public winform_add0()
+        public Dialog_BookModify()
         {
             InitializeComponent();
         }

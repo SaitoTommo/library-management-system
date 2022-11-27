@@ -23,10 +23,11 @@ namespace WinFormsApp1
         public void SearchQuery()
         {
             Query = from b in LibraryDbContext.Shared.Books
-                    join c in LibraryDbContext.Shared.Categories on b.CategoryID equals c.Id
+                    join bi in LibraryDbContext.Shared.BookInfo on b.ISBN equals bi.ISBN
+                    join c in LibraryDbContext.Shared.Categories on bi.CategoryID equals c.Id
                     join h in LibraryDbContext.Shared.BookWareHouses on b.Position equals h.Id
-                    where b.Name.ToLower().Contains(textbox_bookqueryword.Text.ToLower())
-                    select new BookQueryRecord { book = b, wareHouse = h };
+                    where bi.Name.ToLower().Contains(textbox_bookqueryword.Text.ToLower())
+                    select new BookQueryRecord { book = b, wareHouse = h, bookInfo = bi, bookCategory = c };
 
             form_books.DataSource = Query.ToList();
         }
@@ -75,9 +76,10 @@ namespace WinFormsApp1
         private void ShowAllBooks() 
         {
             var q = from b in LibraryDbContext.Shared.Books
-                    join h in LibraryDbContext.Shared.BookWareHouses
-                    on b.Position equals h.Id
-                    select new BookQueryRecord { book = b, wareHouse = h };
+                    join bi in LibraryDbContext.Shared.BookInfo on b.ISBN equals bi.ISBN
+                    join c in LibraryDbContext.Shared.Categories on bi.CategoryID equals c.Id
+                    join h in LibraryDbContext.Shared.BookWareHouses on b.Position equals h.Id
+                    select new BookQueryRecord { book = b, wareHouse = h, bookInfo = bi, bookCategory = c };
 
             form_books.DataSource = q.ToList();
         }
@@ -86,12 +88,14 @@ namespace WinFormsApp1
         {
             public Book book { get; set; }
             public BookWareHouse wareHouse { get; set; }
+            public BookInfo bookInfo { get; set; }
+            public BookCategory bookCategory { get; set; }
 
-            public string BookName => book.Name;
-            public string Author => book.Author;
-            public string Category => LibraryDbContext.Shared.Categories.Single(c => c.Id == book.CategoryID).Name;
-            public string Publisher => book.Publisher;
-            public string ISBN => book.ISBN;
+            public string BookName => bookInfo.Name;
+            public string Author => bookInfo.Author;
+            public string Category => bookCategory.CategoryID;
+            public string Publisher => bookInfo.Publisher;
+            public string ISBN => bookInfo.ISBN;
             public string BookID => book.BookID;
             public string Position => wareHouse.Name;
             public bool CanBeBorrowed => book.OwnerID == null;
