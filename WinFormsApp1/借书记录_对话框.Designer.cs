@@ -35,7 +35,15 @@
             this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CanBeBorrowed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.groupBox_accountInfo = new System.Windows.Forms.GroupBox();
+            this.dataGridView_AccountInfo = new System.Windows.Forms.DataGridView();
+            this._ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button_Cancel = new System.Windows.Forms.Button();
+            this.button_SaveChange = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.comboBox_BookAction = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -49,22 +57,14 @@
             this.columnHeader_Property = new System.Windows.Forms.ColumnHeader();
             this.columnHeader_old = new System.Windows.Forms.ColumnHeader();
             this.columnHeader_new = new System.Windows.Forms.ColumnHeader();
-            this.groupBox_accountInfo = new System.Windows.Forms.GroupBox();
-            this.dataGridView_AccountInfo = new System.Windows.Forms.DataGridView();
-            this._ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button_Cancel = new System.Windows.Forms.Button();
-            this.button_SaveChange = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox_BookInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_BookInfo)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox_accountInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AccountInfo)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -156,165 +156,6 @@
             this.CanBeBorrowed.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.CanBeBorrowed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.comboBox_BookAction);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox_QueryByReader);
-            this.groupBox1.Controls.Add(this.textBox_QueryByBook);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Location = new System.Drawing.Point(5, 5);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Name = "groupBox1";
-            this.tableLayoutPanel1.SetRowSpan(this.groupBox1, 2);
-            this.groupBox1.Size = new System.Drawing.Size(290, 400);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "编辑（日期条目中时间可以修改）";
-            // 
-            // comboBox_BookAction
-            // 
-            this.comboBox_BookAction.Enabled = false;
-            this.comboBox_BookAction.FormattingEnabled = true;
-            this.comboBox_BookAction.Items.AddRange(new object[] {
-            "借出",
-            "返还"});
-            this.comboBox_BookAction.Location = new System.Drawing.Point(80, 114);
-            this.comboBox_BookAction.Name = "comboBox_BookAction";
-            this.comboBox_BookAction.Size = new System.Drawing.Size(204, 25);
-            this.comboBox_BookAction.TabIndex = 10;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 114);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 17);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "行为";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(81, 88);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(204, 23);
-            this.dateTimePicker1.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 88);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "日期";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "借阅人信息";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "书籍信息";
-            // 
-            // textBox_QueryByReader
-            // 
-            this.textBox_QueryByReader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_QueryByReader.Location = new System.Drawing.Point(80, 58);
-            this.textBox_QueryByReader.Name = "textBox_QueryByReader";
-            this.textBox_QueryByReader.Size = new System.Drawing.Size(204, 23);
-            this.textBox_QueryByReader.TabIndex = 1;
-            this.textBox_QueryByReader.TextChanged += new System.EventHandler(this.textBox_QueryByReader_TextChanged);
-            // 
-            // textBox_QueryByBook
-            // 
-            this.textBox_QueryByBook.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_QueryByBook.Location = new System.Drawing.Point(80, 29);
-            this.textBox_QueryByBook.Name = "textBox_QueryByBook";
-            this.textBox_QueryByBook.Size = new System.Drawing.Size(204, 23);
-            this.textBox_QueryByBook.TabIndex = 0;
-            this.textBox_QueryByBook.TextChanged += new System.EventHandler(this.textBox_QueryByBook_TextChanged);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.listView_ChangePreview);
-            this.groupBox2.Location = new System.Drawing.Point(7, 186);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox2.Size = new System.Drawing.Size(277, 207);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "预览修改（单击表格内任意位置预览）";
-            // 
-            // listView_ChangePreview
-            // 
-            this.listView_ChangePreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView_ChangePreview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader_Property,
-            this.columnHeader_old,
-            this.columnHeader_new});
-            this.listView_ChangePreview.Location = new System.Drawing.Point(10, 24);
-            this.listView_ChangePreview.Margin = new System.Windows.Forms.Padding(5);
-            this.listView_ChangePreview.Name = "listView_ChangePreview";
-            this.listView_ChangePreview.Size = new System.Drawing.Size(257, 173);
-            this.listView_ChangePreview.TabIndex = 7;
-            this.listView_ChangePreview.UseCompatibleStateImageBehavior = false;
-            this.listView_ChangePreview.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader_Property
-            // 
-            this.columnHeader_Property.Text = "属性";
-            this.columnHeader_Property.Width = 25;
-            // 
-            // columnHeader_old
-            // 
-            this.columnHeader_old.Text = "旧值";
-            this.columnHeader_old.Width = 25;
-            // 
-            // columnHeader_new
-            // 
-            this.columnHeader_new.Text = "新值";
-            this.columnHeader_new.Width = 25;
-            // 
             // groupBox_accountInfo
             // 
             this.groupBox_accountInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -384,6 +225,8 @@
             // 
             // button_Cancel
             // 
+            this.button_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Cancel.Location = new System.Drawing.Point(631, 4);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
@@ -394,6 +237,8 @@
             // 
             // button_SaveChange
             // 
+            this.button_SaveChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_SaveChange.Location = new System.Drawing.Point(712, 4);
             this.button_SaveChange.Name = "button_SaveChange";
             this.button_SaveChange.Size = new System.Drawing.Size(75, 23);
@@ -402,14 +247,185 @@
             this.button_SaveChange.UseVisualStyleBackColor = true;
             this.button_SaveChange.Click += new System.EventHandler(this.button_SaveChange_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.comboBox_BookAction);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBox_QueryByReader);
+            this.groupBox1.Controls.Add(this.textBox_QueryByBook);
+            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Location = new System.Drawing.Point(5, 5);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.groupBox1.Name = "groupBox1";
+            this.tableLayoutPanel1.SetRowSpan(this.groupBox1, 2);
+            this.groupBox1.Size = new System.Drawing.Size(290, 400);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "编辑（日期条目中时间可以修改）";
+            // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(7, 142);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(277, 34);
             this.label5.TabIndex = 11;
             this.label5.Text = "书籍信息对应ISBN、书名、作者、索书号模糊查询\r\n借阅人信息对应学号和姓名的模糊查询";
+            // 
+            // comboBox_BookAction
+            // 
+            this.comboBox_BookAction.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox_BookAction.Enabled = false;
+            this.comboBox_BookAction.FormattingEnabled = true;
+            this.comboBox_BookAction.Items.AddRange(new object[] {
+            "借出",
+            "返还"});
+            this.comboBox_BookAction.Location = new System.Drawing.Point(80, 114);
+            this.comboBox_BookAction.Name = "comboBox_BookAction";
+            this.comboBox_BookAction.Size = new System.Drawing.Size(204, 25);
+            this.comboBox_BookAction.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 114);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 17);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "行为";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(81, 88);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(204, 23);
+            this.dateTimePicker1.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 88);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 17);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "日期";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "借阅人信息";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "书籍信息";
+            // 
+            // textBox_QueryByReader
+            // 
+            this.textBox_QueryByReader.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_QueryByReader.Location = new System.Drawing.Point(80, 58);
+            this.textBox_QueryByReader.Name = "textBox_QueryByReader";
+            this.textBox_QueryByReader.Size = new System.Drawing.Size(204, 23);
+            this.textBox_QueryByReader.TabIndex = 1;
+            this.textBox_QueryByReader.TextChanged += new System.EventHandler(this.textBox_QueryByReader_TextChanged);
+            // 
+            // textBox_QueryByBook
+            // 
+            this.textBox_QueryByBook.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_QueryByBook.Location = new System.Drawing.Point(80, 29);
+            this.textBox_QueryByBook.Name = "textBox_QueryByBook";
+            this.textBox_QueryByBook.Size = new System.Drawing.Size(204, 23);
+            this.textBox_QueryByBook.TabIndex = 0;
+            this.textBox_QueryByBook.TextChanged += new System.EventHandler(this.textBox_QueryByBook_TextChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.listView_ChangePreview);
+            this.groupBox2.Location = new System.Drawing.Point(7, 186);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox2.Size = new System.Drawing.Size(277, 207);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "预览修改（单击表格内任意位置预览）";
+            // 
+            // listView_ChangePreview
+            // 
+            this.listView_ChangePreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView_ChangePreview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader_Property,
+            this.columnHeader_old,
+            this.columnHeader_new});
+            this.listView_ChangePreview.Location = new System.Drawing.Point(10, 24);
+            this.listView_ChangePreview.Margin = new System.Windows.Forms.Padding(5);
+            this.listView_ChangePreview.Name = "listView_ChangePreview";
+            this.listView_ChangePreview.Size = new System.Drawing.Size(257, 173);
+            this.listView_ChangePreview.TabIndex = 7;
+            this.listView_ChangePreview.UseCompatibleStateImageBehavior = false;
+            this.listView_ChangePreview.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader_Property
+            // 
+            this.columnHeader_Property.Text = "属性";
+            this.columnHeader_Property.Width = 25;
+            // 
+            // columnHeader_old
+            // 
+            this.columnHeader_old.Text = "旧值";
+            this.columnHeader_old.Width = 25;
+            // 
+            // columnHeader_new
+            // 
+            this.columnHeader_new.Text = "新值";
+            this.columnHeader_new.Width = 25;
             // 
             // Dialog_Borrowlog1
             // 
@@ -423,12 +439,12 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox_BookInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_BookInfo)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             this.groupBox_accountInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AccountInfo)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
